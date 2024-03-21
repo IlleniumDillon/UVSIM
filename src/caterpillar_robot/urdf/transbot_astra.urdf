@@ -19,16 +19,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/base_link.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/base_link.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0 0.7 0 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/base_link.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/base_link.STL"/>
             </geometry>
         </collision>
     </link>
@@ -52,16 +52,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/astra_link.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/astra_link.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.7 0.7 0.7 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/astra_link.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/astra_link.STL"/>
             </geometry>
         </collision>
     </link>
@@ -87,16 +87,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/arm.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/arm.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0 0 0 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/arm.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/arm.STL"/>
             </geometry>
         </collision>
     </link>
@@ -121,16 +121,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/arm_link1.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/arm_link1.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.75294 0.75294 0.75294 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/arm_link1.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/arm_link1.STL"/>
             </geometry>
         </collision>
     </link>
@@ -156,16 +156,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/arm_link2.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/arm_link2.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0 0.7 0 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/arm_link2.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/arm_link2.STL"/>
             </geometry>
         </collision>
     </link>
@@ -191,16 +191,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/right_link1.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/right_link1.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.75294 0.75294 0.75294 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/right_link1.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/right_link1.STL"/>
             </geometry>
         </collision>
     </link>
@@ -226,16 +226,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/right_link2.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/right_link2.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.75294  0.75294 0.75294 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/right_link2.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/right_link2.STL"/>
             </geometry>
         </collision>
     </link>
@@ -261,16 +261,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/right_link3.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/right_link3.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.75294 0.75294 0.75294 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/right_link3.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/right_link3.STL"/>
             </geometry>
         </collision>
     </link>
@@ -296,16 +296,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/left_link1.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/left_link1.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.75294 0.75294 0.75294 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/left_link1.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/left_link1.STL"/>
             </geometry>
         </collision>
     </link>
@@ -331,16 +331,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/left_link2.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/left_link2.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.75294 0.75294 0.75294 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/left_link2.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/left_link2.STL"/>
             </geometry>
         </collision>
     </link>
@@ -366,16 +366,16 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/left_link3.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/left_link3.STL"/>
             </geometry>
-            <material name="">
+            <material name="green">
                 <color rgba="0.75294 0.75294 0.75294 1"/>
             </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://transbot_description/meshes/left_link3.STL"/>
+                <mesh filename="file:///home/dillon/UVSIM/src/caterpillar_robot/meshes/left_link3.STL"/>
             </geometry>
         </collision>
     </link>
@@ -386,4 +386,61 @@
         <axis xyz="0 0 1"/>
         <mimic joint="left_joint2" multiplier="-1"/>
     </joint>
+
+    <gazebo reference="arm">
+    	<material>Gazebo/Green</material>
+	</gazebo>
+    <gazebo reference="arm_link1">
+    	<material>Gazebo/Green</material>
+	</gazebo>
+    <gazebo reference="arm_link2">
+    	<material>Gazebo/Green</material>
+	</gazebo>
+    <gazebo reference="astra_link">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="base_link">
+    	<material>Gazebo/Green</material>
+	</gazebo>
+    <gazebo reference="camera_link1">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="camera_link2">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="left_link1">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="left_link2">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="left_link3">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="right_link1">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="right_link2">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="right_link3">
+    	<material>Gazebo/Black</material>
+	</gazebo>
+
+    <gazebo>
+		<plugin name="diff_controller" filename="libgazebo_ros_diff_drive.so">
+			<commandTopic>cmd_vel</commandTopic>
+			<odometryTopic>odom</odometryTopic>
+			<odometryFrame>odom</odometryFrame>
+			<robotNamespace>/</robotNamespace>
+			<leftFrontJoint>base_to_wheel1</leftFrontJoint>
+			<rightFrontJoint>base_to_wheel3</rightFrontJoint>
+			<leftRearJoint>base_to_wheel2</leftRearJoint>
+			<rightRearJoint>base_to_wheel4</rightRearJoint>
+			<odometryRate>0.0</odometryRate>
+			<robotBaseFrame>base_link</robotBaseFrame>
+		</plugin>
+	</gazebo>
+
+
 </robot>
