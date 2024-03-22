@@ -17,6 +17,7 @@ def generate_launch_description():
     package_name = 'caterpillar_robot'
     robot_name_in_model = 'robot'
     urdf_file_path = 'urdf/caterpillar_robot.xacro.urdf'
+    #urdf_file_path = 'urdf/fishbot.urdf'
     world_file_path = 'worlds/aius3011world.world'
 
     pkg_gazebo_ros = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
@@ -36,7 +37,7 @@ def generate_launch_description():
     # )
 
     start_gazebo_cmd = ExecuteProcess(
-        cmd=['gazebo', '--verbose','-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so', world_path],
+        cmd=['gazebo', '--verbose','-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'],
         output='screen')
     
     spawn_entity_cmd = Node(
