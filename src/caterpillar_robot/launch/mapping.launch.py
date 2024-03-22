@@ -20,7 +20,7 @@ def generate_launch_description():
     # 配置文件夹路径
     configuration_directory = LaunchConfiguration('configuration_directory',default= os.path.join(pkg_share, 'config') )
     # 配置文件
-    configuration_basename = LaunchConfiguration('configuration_basename', default='fishbot_2d.lua')
+    configuration_basename = LaunchConfiguration('configuration_basename', default='caterpillar.lua')
     # rviz_config_dir = os.path.join(pkg_share, 'config')+"/cartographer.rviz"
     # print(f"rviz config in {rviz_config_dir}")
 
