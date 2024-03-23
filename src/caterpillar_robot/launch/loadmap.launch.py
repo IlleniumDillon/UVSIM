@@ -17,7 +17,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     mapfile = os.path.join(
-        get_package_share_directory('caterpillar_robot'),'map/mapforsim.yaml'
+        get_package_share_directory('caterpillar_robot'),'map/map0323.yaml'
     )
     mapserver =     Node(
             package='nav2_map_server',

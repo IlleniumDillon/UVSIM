@@ -23,7 +23,7 @@ def generate_launch_description():
     configuration_basename = LaunchConfiguration('configuration_basename', default='caterpillar_locating.lua')
 
     statefile = os.path.join(
-        pkg_share,'map/mapforsim.pbstream'
+        pkg_share,'map/map0323.pbstream'
     )
     cartographer_node = Node(
         package = 'cartographer_ros',
