@@ -49,12 +49,34 @@ def generate_launch_description():
                         '-z', spawn_z_val,
                         '-Y', spawn_yaw_val],
                         output='screen')
+    
+    # start_joint_state_publisher_gui_node = Node(
+    #     package='joint_state_publisher_gui',
+    #     executable='joint_state_publisher_gui',
+    #     name='joint_state_publisher_gui'
+    # )
 
+    start_joint_state_publisher_cmd = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher'
+    )
+
+    start_robot_state_publisher_cmd = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'use_sim_time': True, 
+        # 'robot_description': "/home/dillon/sim/install/caterpillar_robot/share/caterpillar_robot/urdf/caterpillar_robot.xacro.urdf"
+        }],
+        arguments=[default_urdf_model_path]
+    )
 
     ld = LaunchDescription(
         [
             start_gazebo_cmd,
             spawn_entity_cmd,
+            start_joint_state_publisher_cmd,
+            start_robot_state_publisher_cmd,
             # node_robot_state_publisher
         ]
     )
