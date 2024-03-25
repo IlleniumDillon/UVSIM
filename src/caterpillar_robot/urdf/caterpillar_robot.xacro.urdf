@@ -150,7 +150,7 @@
     <child link="camera_link"/>
     <origin rpy="0 0 0" xyz="0 0.0 0.06"/>
   </joint>
-  <link name="left0_link">
+  <link name="left_front_link">
     <visual>
       <geometry>
         <cylinder length="0.05" radius="0.0275"/>
@@ -162,11 +162,43 @@
       <geometry>
         <cylinder length="0.05" radius="0.0275"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  <joint name="left_front_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_front_link"/>
+    <origin rpy="0 0 0" xyz="0.14 -0.095 -0.005"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <gazebo reference="left_front_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+  <link name="left0_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.015"/>
+      </geometry>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.015"/>
+      </geometry>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -176,7 +208,7 @@
   <joint name="left0_joint" type="continuous">
     <parent link="base_link"/>
     <child link="left0_link"/>
-    <origin rpy="0 0 0" xyz="0.14 -0.095 -0.005"/>
+    <origin rpy="0 0 0" xyz="0.14 -0.095 -0.05"/>
     <axis xyz="0 1 0"/>
   </joint>
   <gazebo reference="left0_link">
@@ -194,11 +226,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -226,11 +258,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -258,11 +290,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -290,11 +322,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -313,20 +345,20 @@
   <link name="left5_link">
     <visual>
       <geometry>
-        <cylinder length="0.05" radius="0.0275"/>
+        <cylinder length="0.05" radius="0.015"/>
       </geometry>
       <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.05" radius="0.0275"/>
+        <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -336,14 +368,13 @@
   <joint name="left5_joint" type="continuous">
     <parent link="base_link"/>
     <child link="left5_link"/>
-    <origin rpy="0 0 0" xyz="-0.125 -0.095 -0.005"/>
+    <origin rpy="0 0 0" xyz="-0.125 -0.095 -0.05"/>
     <axis xyz="0 1 0"/>
   </joint>
   <gazebo reference="left5_link">
     <material>Gazebo/Gray</material>
   </gazebo>
-  <!-- <xacro:wheel_func wheel_name="leftv" xyz="-0.1 -0.15 -0.04" rpy="0 0 0" radius="0.0275" length="0.05" mu="4" mu2="4"/> -->
-  <link name="right0_link">
+  <link name="left_back_link">
     <visual>
       <geometry>
         <cylinder length="0.05" radius="0.0275"/>
@@ -355,11 +386,76 @@
       <geometry>
         <cylinder length="0.05" radius="0.0275"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  <joint name="left_back_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_back_link"/>
+    <origin rpy="0 0 0" xyz="-0.125 -0.095 -0.005"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <gazebo reference="left_back_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+  <!-- <xacro:wheel_func wheel_name="leftv" xyz="-0.1 -0.15 -0.04" rpy="0 0 0" radius="0.0275" length="0.05" mu="4" mu2="4"/> -->
+  <link name="right_front_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.0275"/>
+      </geometry>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.0275"/>
+      </geometry>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  <joint name="right_front_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_front_link"/>
+    <origin rpy="0 0 0" xyz="0.14 0.095 -0.005"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <gazebo reference="right_front_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+  <link name="right0_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.015"/>
+      </geometry>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.015"/>
+      </geometry>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -369,7 +465,7 @@
   <joint name="right0_joint" type="continuous">
     <parent link="base_link"/>
     <child link="right0_link"/>
-    <origin rpy="0 0 0" xyz="0.14 0.095 -0.005"/>
+    <origin rpy="0 0 0" xyz="0.14 0.095 -0.05"/>
     <axis xyz="0 1 0"/>
   </joint>
   <gazebo reference="right0_link">
@@ -387,11 +483,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -419,11 +515,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -451,11 +547,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -483,11 +579,11 @@
       <geometry>
         <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -506,20 +602,20 @@
   <link name="right5_link">
     <visual>
       <geometry>
-        <cylinder length="0.05" radius="0.0275"/>
+        <cylinder length="0.05" radius="0.015"/>
       </geometry>
       <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.05" radius="0.0275"/>
+        <cylinder length="0.05" radius="0.015"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode mu="1" mu2="1"/>
-        </friction>
-      </surface>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
     </collision>
     <inertial>
       <mass value="1"/>
@@ -529,10 +625,42 @@
   <joint name="right5_joint" type="continuous">
     <parent link="base_link"/>
     <child link="right5_link"/>
-    <origin rpy="0 0 0" xyz="-0.125 0.095 -0.005"/>
+    <origin rpy="0 0 0" xyz="-0.125 0.095 -0.05"/>
     <axis xyz="0 1 0"/>
   </joint>
   <gazebo reference="right5_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+  <link name="right_back_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.0275"/>
+      </geometry>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.0275"/>
+      </geometry>
+      <!-- <surface>
+                    <friction>
+                        <ode mu="${mu}" mu2="${mu2}"/>
+                    </friction>
+                </surface> -->
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  <joint name="right_back_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_back_link"/>
+    <origin rpy="0 0 0" xyz="-0.125 0.095 -0.005"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <gazebo reference="right_back_link">
     <material>Gazebo/Gray</material>
   </gazebo>
   <!-- <xacro:wheel_func wheel_name="rightv" xyz="-0.1 0.15 -0.04" rpy="0 0 0" radius="0.0275" length="0.05" mu="4" mu2="4"/> -->
@@ -586,10 +714,10 @@
   </joint> -->
   <gazebo>
     <plugin filename="libgazebo_ros_planar_move.so" name="diff_drive">
-      <leftFrontJoint>left1_joint</leftFrontJoint>
-      <rightFrontJoint>right1_joint</rightFrontJoint>
-      <leftRearJoint>left4_joint</leftRearJoint>
-      <rightRearJoint>right4_joint</rightRearJoint>
+      <leftFrontJoint>left0_joint</leftFrontJoint>
+      <rightFrontJoint>right0_joint</rightFrontJoint>
+      <leftRearJoint>left5_joint</leftRearJoint>
+      <rightRearJoint>right5_joint</rightRearJoint>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>

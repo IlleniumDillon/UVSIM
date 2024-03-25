@@ -20,11 +20,11 @@
                 <geometry>
                     <cylinder radius="${radius}" length="${length}" />
                 </geometry>
-                <surface>
+                <!-- <surface>
                     <friction>
                         <ode mu="${mu}" mu2="${mu2}"/>
                     </friction>
-                </surface>
+                </surface> -->
             </collision>
             <xacro:default_inertial mass="0.3"/>
         </link>
@@ -59,7 +59,7 @@
                 <color rgba="0.1 0.1 1.0 0.5" />
             </material>
         </collision>
-        <xacro:default_inertial mass="0.3"/>
+        <xacro:default_inertial mass="2"/>
     </link>
     <link name="plat_link"> 
         <visual>
@@ -172,20 +172,28 @@
         <origin xyz="0 0.0 0.06" rpy="0 0 0"/>
     </joint>
 
-    <xacro:wheel_func wheel_name="left0" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="left_front" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+
+    <xacro:wheel_func wheel_name="left0" xyz="0.14 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left1" xyz="0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left2" xyz="0.025 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left3" xyz="-0.025 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left4" xyz="-0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="left5" xyz="-0.125 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="left5" xyz="-0.125 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+
+    <xacro:wheel_func wheel_name="left_back" xyz="-0.125 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
     <!-- <xacro:wheel_func wheel_name="leftv" xyz="-0.1 -0.15 -0.04" rpy="0 0 0" radius="0.0275" length="0.05" mu="4" mu2="4"/> -->
 
-    <xacro:wheel_func wheel_name="right0" xyz="0.14 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="right_front" xyz="0.14 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+
+    <xacro:wheel_func wheel_name="right0" xyz="0.14 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right1" xyz="0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right2" xyz="0.025 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right3" xyz="-0.025 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right4" xyz="-0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="right5" xyz="-0.125 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="right5" xyz="-0.125 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+
+    <xacro:wheel_func wheel_name="right_back" xyz="-0.125 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
     <!-- <xacro:wheel_func wheel_name="rightv" xyz="-0.1 0.15 -0.04" rpy="0 0 0" radius="0.0275" length="0.05" mu="4" mu2="4"/> -->
 
     <gazebo reference="base_link">
@@ -241,10 +249,10 @@
     <gazebo>
         <plugin name='diff_drive' filename='libgazebo_ros_planar_move.so'>
             
-            <leftFrontJoint>left1_joint</leftFrontJoint>
-			<rightFrontJoint>right1_joint</rightFrontJoint>
-			<leftRearJoint>left4_joint</leftRearJoint>
-			<rightRearJoint>right4_joint</rightRearJoint>
+            <leftFrontJoint>left0_joint</leftFrontJoint>
+			<rightFrontJoint>right0_joint</rightFrontJoint>
+			<leftRearJoint>left5_joint</leftRearJoint>
+			<rightRearJoint>right5_joint</rightRearJoint>
             <commandTopic>cmd_vel</commandTopic>
 			<odometryTopic>odom</odometryTopic>
 			<odometryFrame>odom</odometryFrame>
