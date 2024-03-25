@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot name="mycar" xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:arg name="use_nominal_extrinsics" default="false" />
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
     <xacro:property name="PI" value="3.1415926"/>
     <xacro:macro name="default_inertial" params="mass">
 		<inertial>
@@ -124,7 +126,7 @@
         </collision>
         <xacro:default_inertial mass="0.01"/>
     </link>
-    <link name="camera_link">
+    <!-- <link name="camera_link">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
@@ -144,7 +146,10 @@
             </material>
         </collision>
         <xacro:default_inertial mass="0.01"/>
-    </link>
+    </link> -->
+    <xacro:sensor_d435i parent="tripod_link" use_nominal_extrinsics="$(arg use_nominal_extrinsics)">
+        <origin xyz="0 0 0.06" rpy="0 0 0" />
+    </xacro:sensor_d435i>
     
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint"/>
@@ -166,11 +171,11 @@
         <child link="tripod_link"/>
         <origin xyz="-0.03 0.0 0.08" rpy="0 0 0"/>
     </joint>
-    <joint name="camera_joint" type="continuous">
+    <!-- <joint name="camera_joint" type="continuous">
         <parent link="tripod_link"/>
         <child link="camera_link"/>
         <origin xyz="0 0.0 0.06" rpy="0 0 0"/>
-    </joint>
+    </joint> -->
 
     <xacro:wheel_func wheel_name="left_front" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
