@@ -595,7 +595,10 @@
       <odometryFrame>odom</odometryFrame>
       <robotNamespace>/</robotNamespace>
       <odometryRate>10.0</odometryRate>
-      <robotBaseFrame>base_link</robotBaseFrame>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
     </plugin>
   </gazebo>
   <gazebo reference="laser_link">

@@ -1,51 +1,59 @@
-from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.conditions import IfCondition, UnlessCondition
-from launch.substitutions import LaunchConfiguration
-from launch_ros.actions import Node, SetRemap
-from launch_ros.substitutions import FindPackageShare
-from launch.launch_description_sources import PythonLaunchDescriptionSource
+
 import os
-from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-
-    ## ***** Launch arguments *****
-    use_sim_time_arg = DeclareLaunchArgument('use_sim_time', default_value = 'True')
-
-    ## ***** File paths ******
+    # 定位到功能包的地址
     pkg_share = FindPackageShare(package='caterpillar_robot').find('caterpillar_robot')
-
+    
+    #=====================运行节点需要的配置=======================================================================
+    # 是否使用仿真时间，我们用gazebo，这里设置成true
+    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    # 地图的分辨率
+    resolution = LaunchConfiguration('resolution', default='0.05')
+    # 地图的发布周期
+    publish_period_sec = LaunchConfiguration('publish_period_sec', default='1.0')
     # 配置文件夹路径
     configuration_directory = LaunchConfiguration('configuration_directory',default= os.path.join(pkg_share, 'config') )
     # 配置文件
     configuration_basename = LaunchConfiguration('configuration_basename', default='caterpillar_locating.lua')
 
-    statefile = os.path.join(
-        pkg_share,'map/map_3024.pbstream'
-    )
-    cartographer_node = Node(
-        package = 'cartographer_ros',
-        executable = 'cartographer_node',
-        arguments = [
-            '-configuration_directory', configuration_directory,
-            '-configuration_basename', configuration_basename,
-            '-load_state_filename',statefile],
-        remappings = [
-            ('scan', 'scan')],
-        output = 'screen'
-        )
     
-    rviz_node = Node(
+    #=====================声明三个节点，cartographer/occupancy_grid_node/rviz_node=================================
+    cartographer_node = Node(
+        package='cartographer_ros',
+        executable='cartographer_node',
+        name='cartographer_node',
+        output='screen',
+        parameters=[{'use_sim_time': use_sim_time}],
+        arguments=['-configuration_directory', configuration_directory,
+                   '-configuration_basename', configuration_basename,
+                   '-load_state_filename','/home/zj/project/UVSIM/src/caterpillar_robot/map/map_3024.pbstream'])
+
+    # occupancy_grid_node = Node(
+    #     package='cartographer_ros',
+    #     executable='occupancy_grid_node',
+    #     name='occupancy_grid_node',
+    #     output='screen',
+    #     parameters=[{'use_sim_time': use_sim_time}],
+    #     arguments=['-resolution', resolution, '-publish_period_sec', publish_period_sec])
+
+    start_rviz_cmd = Node(
         package='rviz2',
-        namespace='rviz2',
         executable='rviz2',
         name='rviz2',
-        output='screen')
-    return LaunchDescription([
-        use_sim_time_arg,
-        rviz_node,
-        cartographer_node,
-    ])
+        output='screen',
+        # arguments=['-d', default_rviz_config_path]
+        )
 
+    #===============================================定义启动文件========================================================
+    ld = LaunchDescription()
+    ld.add_action(cartographer_node)
+    ld.add_action(start_rviz_cmd)
+    # ld.add_action(rviz_node)
+
+    return ld
