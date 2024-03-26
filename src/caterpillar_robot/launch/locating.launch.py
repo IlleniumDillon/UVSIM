@@ -21,7 +21,9 @@ def generate_launch_description():
     configuration_directory = LaunchConfiguration('configuration_directory',default= os.path.join(pkg_share, 'config') )
     # 配置文件
     configuration_basename = LaunchConfiguration('configuration_basename', default='caterpillar_locating.lua')
-
+    load_state_filename = LaunchConfiguration('load_state_filename', default=os.path.join(pkg_share, 'map/map_3024.pbstream'))
+    #rviz配置文件
+    rviz_config_path = os.path.join(pkg_share,'rviz','theworld.rviz')
     
     #=====================声明三个节点，cartographer/occupancy_grid_node/rviz_node=================================
     cartographer_node = Node(
@@ -32,7 +34,7 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}],
         arguments=['-configuration_directory', configuration_directory,
                    '-configuration_basename', configuration_basename,
-                   '-load_state_filename','/home/zj/project/UVSIM/src/caterpillar_robot/map/map_3024.pbstream'])
+                   '-load_state_filename',load_state_filename])
 
     # occupancy_grid_node = Node(
     #     package='cartographer_ros',
@@ -47,7 +49,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        # arguments=['-d', default_rviz_config_path]
+        arguments=['-d', rviz_config_path]
         )
 
     #===============================================定义启动文件========================================================

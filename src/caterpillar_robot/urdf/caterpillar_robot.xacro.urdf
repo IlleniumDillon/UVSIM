@@ -318,7 +318,7 @@
     <visual>
       <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0149 -0.0175 0"/>
       <geometry>
-        <mesh filename="file:///home/dillon/project/realsense_ros2_gazebo/install/realsense_ros2_gazebo/share/realsense_ros2_gazebo/meshes/realsense_d435.stl"/>
+        <mesh filename="file:///home/zj/pkg/realsense_ros2_gazebo/install/realsense_ros2_gazebo/share/realsense_ros2_gazebo/meshes/realsense_d435.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -485,11 +485,10 @@
   </gazebo>
   <gazebo>
     <plugin filename="librealsense_gazebo_plugin.so" name="d435">
-      <!-- <plugin name="${sensor_name}" filename="librealsense_ros2_gazebo.so"> -->
       <prefix>d435_</prefix>
-      <depthUpdateRate>10</depthUpdateRate>
-      <colorUpdateRate>10</colorUpdateRate>
-      <infraredUpdateRate>10</infraredUpdateRate>
+      <depthUpdateRate>30</depthUpdateRate>
+      <colorUpdateRate>30</colorUpdateRate>
+      <infraredUpdateRate>30</infraredUpdateRate>
       <depthTopicName>depth/image_raw</depthTopicName>
       <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
       <colorTopicName>color/image_raw</colorTopicName>
