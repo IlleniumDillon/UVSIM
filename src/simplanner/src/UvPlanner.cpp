@@ -12,6 +12,8 @@ UvPlanner::UvPlanner():Node("uvplanner_node")
         std::bind(&UvPlanner::srvSolveCallback,this,std::placeholders::_1,std::placeholders::_2));*/
     subGoal = this->create_subscription<geometry_msgs::msg::PoseStamped>("/goal_pose",1,
         std::bind(&UvPlanner::subGoalCallback,this,std::placeholders::_1));
+    subScan = this->create_subscription<sensor_msgs::msg::LaserScan>("/scan",1,
+        std::bind(&APFPlanner::updateLaser,&apfPlanner,std::placeholders::_1));
     pubPath = this->create_publisher<nav_msgs::msg::Path>("/path",1);
     pubCmd = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel",1);
     tf_buffer = std::make_unique<tf2_ros::Buffer>(this->get_clock());
@@ -77,45 +79,59 @@ void UvPlanner::localPlanner()
         RCLCPP_INFO(this->get_logger(), "Could not transform %s to %s: %s", toFrameRel.c_str(), fromFrameRel.c_str(), ex.what());
         return;
     }
+
     geometry_msgs::msg::Twist cmd;
-    if(currentPathIndx >= path.size())
-    {
-        cmd.linear.x = 0;
-        cmd.linear.y = 0;
-        cmd.linear.z = 0;
-        pubCmd->publish(cmd);
-        return;
-    }
+    Vector3d f = apfPlanner.solve(CurrPos,CurrRPY,path);
+    RCLCPP_INFO(this->get_logger(),"F[%f,%f,%f]",f(0),f(1),f(2));
+    double fx = f(0),fy = f(1);
+    if(fx > 1) fx = 0.5;
+    if(fx < -1) fx = -0.5;
+    if(fy > 1) fy = 0.5;
+    if(fy < -1) fy = -0.5;
+
+    cmd.linear.x = fx;
+    cmd.angular.z = fy;
     
-    Vector3d deltap = path.at(currentPathIndx) - CurrPos;
-    double dx = deltap(0);
-    double dy = deltap(1);
-    double distance = sqrt(dx*dx+dy*dy);
-    if(distance < 0.05) currentPathIndx++;
-    if(currentPathIndx >= path.size())
-    {
-        cmd.linear.x = 0;
-        cmd.linear.y = 0;
-        cmd.linear.z = 0;
-        pubCmd->publish(cmd);
-        return;
-    }
-    deltap = path.at(currentPathIndx) - CurrPos;
-    dx = deltap(0);
-    dy = deltap(1);
-    distance = sqrt(dx*dx+dy*dy);
-    double rotate = atan2(dy,dx) - CurrRPY(2);
-    if(abs(rotate) > 0.15)
-    {
-        cmd.linear.x = 0;
-        cmd.angular.z = rotate > 0 ? 1 : 1;
-    }
-    else
-    {
-        cmd.angular.z = 0;
-        cmd.linear.x = 0.5;
-    }
     pubCmd->publish(cmd);
+    // geometry_msgs::msg::Twist cmd;
+    // if(currentPathIndx >= path.size())
+    // {
+    //     cmd.linear.x = 0;
+    //     cmd.linear.y = 0;
+    //     cmd.linear.z = 0;
+    //     pubCmd->publish(cmd);
+    //     return;
+    // }
+    
+    // Vector3d deltap = path.at(currentPathIndx) - CurrPos;
+    // double dx = deltap(0);
+    // double dy = deltap(1);
+    // double distance = sqrt(dx*dx+dy*dy);
+    // if(distance < 0.05) currentPathIndx++;
+    // if(currentPathIndx >= path.size())
+    // {
+    //     cmd.linear.x = 0;
+    //     cmd.linear.y = 0;
+    //     cmd.linear.z = 0;
+    //     pubCmd->publish(cmd);
+    //     return;
+    // }
+    // deltap = path.at(currentPathIndx) - CurrPos;
+    // dx = deltap(0);
+    // dy = deltap(1);
+    // distance = sqrt(dx*dx+dy*dy);
+    // double rotate = atan2(dy,dx) - CurrRPY(2);
+    // if(abs(rotate) > 0.15)
+    // {
+    //     cmd.linear.x = 0;
+    //     cmd.angular.z = rotate > 0 ? 1 : 1;
+    // }
+    // else
+    // {
+    //     cmd.angular.z = 0;
+    //     cmd.linear.x = 0.5;
+    // }
+    // pubCmd->publish(cmd);
 }
 void UvPlanner::subGoalCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
 {
@@ -132,7 +148,7 @@ void UvPlanner::subGoalCallback(const geometry_msgs::msg::PoseStamped::SharedPtr
     Vector3d goal(msg->pose.position.x,msg->pose.position.y,msg->pose.position.z);
     RCLCPP_INFO(this->get_logger(),"[%f,%f,%f]->[%f,%f,%f]",CurrPos.x(),CurrPos.y(),CurrPos.z(),goal.x(),goal.y(),goal.z());
     auto start = std::chrono::system_clock::now();
-    solver.graphSearch(CurrPos,goal,true);
+    solver.graphSearch(CurrPos,goal,false);
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> diff = end - start;
     RCLCPP_INFO(this->get_logger(),"cost time:%f",diff);

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "graph_searcher.hpp"
+#include "path_generator.hpp"
+#include "local_planner.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "tf2/exceptions.h"
 #include "tf2_ros/transform_listener.h"
@@ -30,6 +32,7 @@ public:
     //UV::AStar solver;
     // UV::JPS solver;
     gridPathFinder solver;
+    APFPlanner apfPlanner;
     Vector3d lastGoal;
     Vector3d CurrPos;
     Vector3d CurrRPY;
@@ -43,6 +46,8 @@ public:
     ///
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr subGoal;
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr subnMap;
+    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr subScan;
+    
     rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr pubPath;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pubCmd;
     rclcpp::TimerBase::SharedPtr timer;

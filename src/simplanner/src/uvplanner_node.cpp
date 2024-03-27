@@ -1,5 +1,4 @@
 #include "rclcpp/rclcpp.hpp"
-#include "SamplePlanner.hpp"
 #include "UvPlanner.hpp"
 
 int main(int argc, char const *argv[])
