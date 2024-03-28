@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<robot name="mycar" xmlns:xacro="http://wiki.ros.org/xacro">
+<robot name="robot" xmlns:xacro="http://wiki.ros.org/xacro">
+    <!-- <xacro:arg name="ns" default="" /> -->
+    <xacro:property name="robot_name" value="$(arg ns)"/>
     <xacro:property name="PI" value="3.1415926"/>
     <xacro:macro name="default_inertial" params="mass">
 		<inertial>
@@ -8,7 +10,7 @@
 		</inertial>
 	</xacro:macro>
     <xacro:macro name="wheel_func" params="wheel_name radius length xyz rpy mu mu2" >
-        <link name="${wheel_name}_link">
+        <link name="${robot_name}_${wheel_name}_link">
             <visual>
                 <geometry>
                     <cylinder radius="${radius}" length="${length}" />
@@ -20,27 +22,22 @@
                 <geometry>
                     <cylinder radius="${radius}" length="${length}" />
                 </geometry>
-                <!-- <surface>
-                    <friction>
-                        <ode mu="${mu}" mu2="${mu2}"/>
-                    </friction>
-                </surface> -->
             </collision>
             <xacro:default_inertial mass="0.3"/>
         </link>
-        <joint name="${wheel_name}_joint" type="continuous">
-            <parent link="base_link"/>
-            <child link="${wheel_name}_link"/>
+        <joint name="${robot_name}_${wheel_name}_joint" type="continuous">
+            <parent link="${robot_name}_base_link"/>
+            <child link="${robot_name}_${wheel_name}_link"/>
             <origin xyz="${xyz}" rpy="${rpy}"/>
             <axis xyz="0 1 0" />
         </joint>
-        <gazebo reference="${wheel_name}_link">
+        <gazebo reference="${robot_name}_${wheel_name}_link">
             <material>Gazebo/Gray</material>
         </gazebo>
     </xacro:macro>
 
-    <link name="base_footprint"/>
-    <link name="base_link">
+    <link name="${robot_name}_base_footprint"/>
+    <link name="${robot_name}_base_link">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
@@ -61,7 +58,7 @@
         </collision>
         <xacro:default_inertial mass="2"/>
     </link>
-    <link name="plat_link"> 
+    <link name="${robot_name}_plat_link"> 
         <visual>
             <origin xyz="0 0 0.0" rpy="0 0 0"/>
             <geometry>
@@ -82,7 +79,7 @@
         </collision>
         <xacro:default_inertial mass="0.02"/>
     </link>
-    <link name="laser_link">
+    <link name="${robot_name}_laser_link">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
@@ -103,7 +100,7 @@
         </collision>
         <xacro:default_inertial mass="0.01"/>
     </link>
-    <link name="tripod_link">
+    <link name="${robot_name}_tripod_link">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
@@ -124,58 +121,33 @@
         </collision>
         <xacro:default_inertial mass="0.01"/>
     </link>
-    <!-- <link name="camera_link">
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.025 0.09 0.03"/>
-            </geometry>
-            <material name="black">
-                <color rgba="0.0 0.0 0.0 0.5" /> 
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.025 0.09 0.03"/>
-            </geometry>
-                <material name="black">
-                <color rgba="0.0 0.0 0.0 0.5" /> 
-            </material>
-        </collision>
-        <xacro:default_inertial mass="0.01"/>
-    </link> -->
-    <xacro:include filename="$(find realsense_ros2_gazebo)/xacro/depthcam.xacro"/>
+
+    <!-- <xacro:include filename="$(find realsense_ros2_gazebo)/xacro/depthcam.xacro"/>
 
     <xacro:realsense_d435 sensor_name="d435" parent_link="tripod_link" rate="30">
     <origin rpy="0 0 0 " xyz="0 0 0.045"/>
-    </xacro:realsense_d435>
+    </xacro:realsense_d435> -->
     
-    <joint name="base_joint" type="fixed">
-        <parent link="base_footprint"/>
-        <child link="base_link"/>
+    <joint name="${robot_name}_base_joint" type="fixed">
+        <parent link="${robot_name}_base_footprint"/>
+        <child link="${robot_name}_base_link"/>
         <origin xyz="0.0 0.0 0.1" rpy="0 0 0"/>
     </joint>
-    <joint name="plat_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="plat_link"/>
+    <joint name="${robot_name}_plat_joint" type="fixed">
+        <parent link="${robot_name}_base_link"/>
+        <child link="${robot_name}_plat_link"/>
         <origin xyz="-0.055 0.0 0.07" rpy="0 0 0"/>
     </joint>
-    <joint name="laser_joint" type="fixed">
-        <parent link="plat_link"/>
-        <child link="laser_link"/>
+    <joint name="${robot_name}_laser_joint" type="fixed">
+        <parent link="${robot_name}_plat_link"/>
+        <child link="${robot_name}_laser_link"/>
         <origin xyz="0.055 0.0 0.05" rpy="0 0 0"/>
     </joint>
-    <joint name="tripod_joint" type="fixed">
-        <parent link="plat_link"/>
-        <child link="tripod_link"/>
+    <joint name="${robot_name}_tripod_joint" type="fixed">
+        <parent link="${robot_name}_plat_link"/>
+        <child link="${robot_name}_tripod_link"/>
         <origin xyz="-0.03 0.0 0.08" rpy="0 0 0"/>
     </joint>
-    <!-- <joint name="camera_joint" type="continuous">
-        <parent link="tripod_link"/>
-        <child link="camera_link"/>
-        <origin xyz="0 0.0 0.06" rpy="0 0 0"/>
-    </joint> -->
 
     <xacro:wheel_func wheel_name="left_front" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
@@ -187,7 +159,6 @@
     <xacro:wheel_func wheel_name="left5" xyz="-0.125 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
 
     <xacro:wheel_func wheel_name="left_back" xyz="-0.125 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
-    <!-- <xacro:wheel_func wheel_name="leftv" xyz="-0.1 -0.15 -0.04" rpy="0 0 0" radius="0.0275" length="0.05" mu="4" mu2="4"/> -->
 
     <xacro:wheel_func wheel_name="right_front" xyz="0.14 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
@@ -199,80 +170,51 @@
     <xacro:wheel_func wheel_name="right5" xyz="-0.125 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
 
     <xacro:wheel_func wheel_name="right_back" xyz="-0.125 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
-    <!-- <xacro:wheel_func wheel_name="rightv" xyz="-0.1 0.15 -0.04" rpy="0 0 0" radius="0.0275" length="0.05" mu="4" mu2="4"/> -->
 
-    <gazebo reference="base_link">
+    <gazebo reference="${robot_name}_base_link">
         <material>Gazebo/Green</material>
     </gazebo>
-    <gazebo reference="plat_link">
+    <gazebo reference="${robot_name}_plat_link">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="laser_link">
+    <gazebo reference="${robot_name}_laser_link">
         <material>Gazebo/Gray</material>
     </gazebo>
-    <gazebo reference="tripod_link">
+    <gazebo reference="${robot_name}_tripod_link">
         <material>Gazebo/Gray</material>
     </gazebo>
-    <!-- <gazebo reference="camera_link">
-        <material>Gazebo/Gray</material>
-    </gazebo> -->
-    
-    <!-- <link name="caster_link">
-      <visual>
-        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
-        <geometry>
-            <sphere radius="0.015"/>
-        </geometry>
-          <material name="black">
-            <color rgba="0.0 0.0 0.0 0.5" /> 
-          </material>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
-        <geometry>
-            <sphere radius="0.015"/>
-        </geometry>
-          <material name="black">
-            <color rgba="0.0 0.0 0.0 0.5" /> 
-          </material>
-          <surface>
-            <friction>
-                <ode mu="0" mu2="0"/>
-            </friction>
-        </surface>
-      </collision>
-      <xacro:default_inertial mass="0.3"/>
-  </link>
-    
-  <joint name="caster_joint" type="fixed">
-      <parent link="base_link" />
-      <child link="caster_link" />
-      <origin xyz="0.15 0.0 -0.05" />
-      <axis xyz="0 1 0" />
-  </joint> -->
 
     <gazebo>
-        <plugin name='diff_drive' filename='libgazebo_ros_planar_move.so'>
-            
-            <leftFrontJoint>left0_joint</leftFrontJoint>
-			<rightFrontJoint>right0_joint</rightFrontJoint>
-			<leftRearJoint>left5_joint</leftRearJoint>
-			<rightRearJoint>right5_joint</rightRearJoint>
-            <commandTopic>cmd_vel</commandTopic>
-			<odometryTopic>odom</odometryTopic>
-			<odometryFrame>odom</odometryFrame>
-			<robotNamespace>/</robotNamespace>
+        <plugin name='${robot_name}_diff_drive' filename='libgazebo_ros_planar_move.so'>
+            <ros>
+                <namespace>/${robot_name}</namespace>
+            </ros>
+            <update_rate>100</update_rate>
+            <publish_rate>10</publish_rate>
+            <publish_odom>true</publish_odom>
+            <publish_odom_tf>true</publish_odom_tf>
+
+            <odometry_frame>${robot_name}_odom</odometry_frame>
+            <robot_base_frame>${robot_name}_base_footprint</robot_base_frame>
+            <!-- <leftFrontJoint>${robot_name}_left0_joint</leftFrontJoint>
+			<rightFrontJoint>${robot_name}_right0_joint</rightFrontJoint>
+			<leftRearJoint>${robot_name}_left5_joint</leftRearJoint>
+			<rightRearJoint>${robot_name}_right5_joint</rightRearJoint>
+            <commandTopic>/${robot_name}/cmd_vel</commandTopic>
+			<odometryTopic>/${robot_name}/odom</odometryTopic>
+			<odometryFrame>${robot_name}_odom</odometryFrame>
 			<odometryRate>10.0</odometryRate>
             <publish_odom>true</publish_odom>
             <publish_odom_tf>true</publish_odom_tf>
             <publish_wheel_tf>true</publish_wheel_tf>
-			<robotBaseFrame>base_footprint</robotBaseFrame>
+			<robotBaseFrame>${robot_name}_base_footprint</robotBaseFrame>
+            <broadcastTF>1</broadcastTF> -->
         </plugin>
     </gazebo>
 
 
-    <gazebo reference="laser_link">
-        <sensor name="laser_sensor" type="ray">
+    <gazebo reference="${robot_name}_laser_link">
+        <sensor name="${robot_name}_laser_sensor" type="ray">
         <always_on>true</always_on>
         <visualize>false</visualize>
         <update_rate>10</update_rate>
@@ -282,8 +224,6 @@
               <horizontal>
                 <samples>360</samples>
                 <resolution>1.000000</resolution>
-                <!-- <min_angle>-2.3561944901923449288469825374596</min_angle>
-                <max_angle>2.3561944901923449288469825374596</max_angle> -->
                 <min_angle>0.00</min_angle>
                 <max_angle>6.28</max_angle>
               </horizontal>
@@ -300,9 +240,10 @@
             </noise>
         </ray>
   
-        <plugin name="laserscan" filename="libgazebo_ros_ray_sensor.so">
+        <plugin name="${robot_name}_laserscan" filename="libgazebo_ros_ray_sensor.so">
+          <robotNamespace>/${robot_name}</robotNamespace>
           <ros>
-            <!-- <namespace>/tb3</namespace> -->
+            <namespace>/${robot_name}</namespace>
             <remapping>~/out:=scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
