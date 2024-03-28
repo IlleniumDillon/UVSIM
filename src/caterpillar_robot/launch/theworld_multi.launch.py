@@ -12,8 +12,9 @@ def gen_robot_list(number_of_robots):
 
     for i in range(number_of_robots):
         robot_name = "robot"+str(i)
-        x_pos = float(i)
-        robots.append({'name': robot_name, 'x_pose': x_pos, 'y_pose': 0.0, 'z_pose': 0.25})
+        x_pos = float(i/7)*0.5
+        y_pos = float(i%7)*0.5
+        robots.append({'name': robot_name, 'x_pose': x_pos, 'y_pose': y_pos, 'z_pose': 0.25})
 
 
     return robots 
@@ -21,7 +22,7 @@ def gen_robot_list(number_of_robots):
 def generate_launch_description():
     robot_name_in_model = 'mycar'
     package_name = 'caterpillar_robot'
-    urdf_name = "caterpillar_robot.xacro"
+    urdf_name = "caterpillar_robot_withoutsensor.xacro"
 
     ld = LaunchDescription()
     pkg_share = FindPackageShare(package=package_name).find(package_name) 
@@ -30,11 +31,12 @@ def generate_launch_description():
 
     # Start Gazebo server
     start_gazebo_cmd = ExecuteProcess(
-        cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so', gazebo_world_path],
+        # cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so', gazebo_world_path],
+        cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so'],
         output='screen')
     ld.add_action(start_gazebo_cmd)
 
-    robots = gen_robot_list(5)
+    robots = gen_robot_list(50)
 
     spawn_robots_cmds = []
     robots_state_publisher_cmds = []

@@ -121,12 +121,6 @@
         </collision>
         <xacro:default_inertial mass="0.01"/>
     </link>
-
-    <xacro:include filename="$(find realsense_ros2_gazebo)/xacro/d435.xacro"/>
-
-    <xacro:realsense_d435 sensor_name="${robot_name}_d435" parent_link="${robot_name}_tripod_link" rate="30" robot_name="${robot_name}">
-    <origin rpy="0 0 0 " xyz="0 0 0.045"/>
-    </xacro:realsense_d435>
     
     <joint name="${robot_name}_base_joint" type="fixed">
         <parent link="${robot_name}_base_footprint"/>
@@ -149,27 +143,27 @@
         <origin xyz="-0.03 0.0 0.08" rpy="0 0 0"/>
     </joint>
 
-    <xacro:wheel_func wheel_name="left_front" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <!-- <xacro:wheel_func wheel_name="left_front" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/> -->
 
     <xacro:wheel_func wheel_name="left0" xyz="0.14 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="left1" xyz="0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+    <!-- <xacro:wheel_func wheel_name="left1" xyz="0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left2" xyz="0.025 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left3" xyz="-0.025 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="left4" xyz="-0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="left4" xyz="-0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/> -->
     <xacro:wheel_func wheel_name="left5" xyz="-0.125 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
 
-    <xacro:wheel_func wheel_name="left_back" xyz="-0.125 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <!-- <xacro:wheel_func wheel_name="left_back" xyz="-0.125 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
-    <xacro:wheel_func wheel_name="right_front" xyz="0.14 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="right_front" xyz="0.14 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/> -->
 
     <xacro:wheel_func wheel_name="right0" xyz="0.14 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="right1" xyz="0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+    <!-- <xacro:wheel_func wheel_name="right1" xyz="0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right2" xyz="0.025 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right3" xyz="-0.025 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="right4" xyz="-0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="right4" xyz="-0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/> -->
     <xacro:wheel_func wheel_name="right5" xyz="-0.125 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
 
-    <xacro:wheel_func wheel_name="right_back" xyz="-0.125 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <!-- <xacro:wheel_func wheel_name="right_back" xyz="-0.125 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/> -->
 
     <gazebo reference="${robot_name}_base_link">
         <material>Gazebo/Green</material>
@@ -189,7 +183,7 @@
             <ros>
                 <namespace>/${robot_name}</namespace>
             </ros>
-            <update_rate>100</update_rate>
+            <update_rate>10</update_rate>
             <publish_rate>10</publish_rate>
             <publish_odom>true</publish_odom>
             <publish_odom_tf>true</publish_odom_tf>
@@ -211,45 +205,5 @@
             <broadcastTF>1</broadcastTF> -->
         </plugin>
     </gazebo>
-
-
-    <gazebo reference="${robot_name}_laser_link">
-        <sensor name="${robot_name}_laser_sensor" type="ray">
-        <always_on>true</always_on>
-        <visualize>false</visualize>
-        <update_rate>10</update_rate>
-        <pose>0 0 0.075 0 0 0</pose>
-        <ray>
-            <scan>
-              <horizontal>
-                <samples>360</samples>
-                <resolution>1.000000</resolution>
-                <min_angle>0.00</min_angle>
-                <max_angle>6.28</max_angle>
-              </horizontal>
-            </scan>
-            <range>
-              <min>0.200000</min>
-              <max>50</max>
-              <resolution>0.005000</resolution>
-            </range>
-            <noise>
-              <type>gaussian</type>
-              <mean>0.0</mean>
-              <stddev>0.001</stddev>
-            </noise>
-        </ray>
-  
-        <plugin name="${robot_name}_laserscan" filename="libgazebo_ros_ray_sensor.so">
-          <robotNamespace>/${robot_name}</robotNamespace>
-          <ros>
-            <namespace>/${robot_name}</namespace>
-            <remapping>~/out:=scan</remapping>
-          </ros>
-          <output_type>sensor_msgs/LaserScan</output_type>
-          <frame_name>laser_link</frame_name>
-        </plugin>
-        </sensor>
-      </gazebo>
 
 </robot>
