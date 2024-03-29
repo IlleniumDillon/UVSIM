@@ -134,4 +134,5 @@ class gridPathFinder
 		std::vector<Vector3d> getPath();
 		std::vector<Vector3d> getVisitedNodes();
 		std::vector<Vector3d> getCloseNodes();
+		
 };

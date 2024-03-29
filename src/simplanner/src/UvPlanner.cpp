@@ -2,24 +2,28 @@
 using namespace Eigen;
 UvPlanner::UvPlanner():Node("uvplanner_node")
 {
+    this->declare_parameter("robot_name", "");
+    this->declare_parameter("map_file", "");
+    robot_name = this->get_parameter("robot_name").as_string();
     lastGoal = Vector3d(0,0,0);
     CurrPos = Vector3d(0,0,0);
     CurrRPY = Vector3d(0,0,0);
     currentPathIndx = 0;
-    subnMap = this->create_subscription<nav_msgs::msg::OccupancyGrid>("/map",1,
-        std::bind(&UvPlanner::subMapCallback,this,std::placeholders::_1));
+    // subnMap = this->create_subscription<nav_msgs::msg::OccupancyGrid>("/map",1,
+    //     std::bind(&UvPlanner::subMapCallback,this,std::placeholders::_1));
+    loadMap();
     /*srvPath = this->create_service<uvinterfaces::srv::UvPathplan>("path",
         std::bind(&UvPlanner::srvSolveCallback,this,std::placeholders::_1,std::placeholders::_2));*/
-    subGoal = this->create_subscription<geometry_msgs::msg::PoseStamped>("/goal_pose",1,
+    subGoal = this->create_subscription<geometry_msgs::msg::PoseStamped>("goal_pose",1,
         std::bind(&UvPlanner::subGoalCallback,this,std::placeholders::_1));
-    subScan = this->create_subscription<sensor_msgs::msg::LaserScan>("/scan",1,
+    subScan = this->create_subscription<sensor_msgs::msg::LaserScan>("scan",1,
         std::bind(&APFPlanner::updateLaser,&apfPlanner,std::placeholders::_1));
-    pubPath = this->create_publisher<nav_msgs::msg::Path>("/path",1);
-    pubCmd = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel",1);
+    pubPath = this->create_publisher<nav_msgs::msg::Path>("path",1);
+    pubCmd = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel",1);
     tf_buffer = std::make_unique<tf2_ros::Buffer>(this->get_clock());
     tf_listener = std::make_shared<tf2_ros::TransformListener>(*tf_buffer);
     timer = this->create_wall_timer(100ms, std::bind(&UvPlanner::localPlanner, this));
-    readyPlan = false;
+    //readyPlan = false;
 }
 
 void UvPlanner::subMapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
@@ -59,7 +63,7 @@ void UvPlanner::localPlanner()
     geometry_msgs::msg::TransformStamped t;
     geometry_msgs::msg::Quaternion q;
     tf2::Quaternion quat;
-    std::string fromFrameRel = "base_link";
+    std::string fromFrameRel = robot_name+"_base_link";
     std::string toFrameRel = "map";
     try 
     {
@@ -82,12 +86,12 @@ void UvPlanner::localPlanner()
 
     geometry_msgs::msg::Twist cmd;
     Vector3d f = apfPlanner.solve(CurrPos,CurrRPY,path);
-    RCLCPP_INFO(this->get_logger(),"F[%f,%f,%f]",f(0),f(1),f(2));
+    //RCLCPP_INFO(this->get_logger(),"F[%f,%f,%f]",f(0),f(1),f(2));
     double fx = f(0),fy = f(1);
-    if(fx > 1) fx = 0.5;
-    if(fx < -1) fx = -0.5;
-    if(fy > 1) fy = 0.5;
-    if(fy < -1) fy = -0.5;
+    if(fx > 1) fx = 0.3;
+    if(fx < -1) fx = -0.3;
+    if(fy > 1) fy = 0.3;
+    if(fy < -1) fy = -0.3;
 
     cmd.linear.x = fx;
     cmd.angular.z = fy;
@@ -132,6 +136,40 @@ void UvPlanner::localPlanner()
     //     cmd.linear.x = 0.5;
     // }
     // pubCmd->publish(cmd);
+}
+void UvPlanner::loadMap()
+{
+    std::string map_file = this->get_parameter("map_file").as_string();
+    nav_msgs::msg::OccupancyGrid map;
+    nav2_map_server::loadMapFromYaml(map_file,map);
+    if(inProgress)
+    {
+        RCLCPP_ERROR(this->get_logger(),"cannot update map.");
+        return;
+    }
+    Vector3d ol(map.info.origin.position.x,
+        map.info.origin.position.y,
+        map.info.origin.position.z);
+    Vector3d ou(map.info.origin.position.x,
+        map.info.origin.position.y,
+        map.info.origin.position.z+map.info.resolution);
+    solver.initGridMap(map.info.resolution,ol,ou,map.info.width,map.info.height,1);
+    //uint8_t* dmap = new uint8_t[map.info.height*map.info.width];
+    RCLCPP_INFO(this->get_logger(),"%d,%d",map.info.height,map.info.width);
+    for(int i = 0; i < map.info.height; i++)
+    {
+        for(int j = 0; j < map.info.width; j++)
+        {
+            //RCLCPP_INFO(this->get_logger(),"%d",map.data.at(i*map.info.width+j));
+            if(map.data.at(i*map.info.width+j) == -1||
+                map.data.at(i*map.info.width+j) == 100)
+            {
+                solver.setObs(j,i,0);
+            }
+            
+        }
+    }
+    readyPlan = true;
 }
 void UvPlanner::subGoalCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
 {

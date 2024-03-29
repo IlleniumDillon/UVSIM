@@ -8,6 +8,7 @@
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/buffer.h"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.h"
+#include "nav2_map_server/map_io.hpp"
 //#include "uvinterfaces/srv/uv_pathplan.hpp"
 //#include "uvinterfaces/msg/uv_map.hpp"
 
@@ -28,6 +29,7 @@ public:
     void subGoalCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void subMapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg);
     void localPlanner();
+    void loadMap();
 public:
     //UV::AStar solver;
     // UV::JPS solver;
@@ -57,4 +59,6 @@ public:
 
     bool readyPlan = false;
     bool inProgress = false;
+
+    std::string robot_name;
 };

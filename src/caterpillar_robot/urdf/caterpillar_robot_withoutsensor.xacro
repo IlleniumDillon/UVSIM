@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <robot name="robot" xmlns:xacro="http://wiki.ros.org/xacro">
-    <!-- <xacro:arg name="ns" default="" /> -->
-    <xacro:property name="robot_name" value="$(arg ns)"/>
+    <xacro:arg name="robot_color" default="Green" />
+    <xacro:arg name="robot_name" default="robot" />
+    <xacro:arg name="robot_namespace" default="" />
+    <xacro:property name="robot_color" value="$(arg robot_color)"/>
+    <xacro:property name="robot_name" value="$(arg robot_name)"/>
+    <xacro:property name="robot_namespace" value="$(arg robot_namespace)"/>
     <xacro:property name="PI" value="3.1415926"/>
     <xacro:macro name="default_inertial" params="mass">
 		<inertial>
@@ -143,30 +147,30 @@
         <origin xyz="-0.03 0.0 0.08" rpy="0 0 0"/>
     </joint>
 
-    <!-- <xacro:wheel_func wheel_name="left_front" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/> -->
+    <xacro:wheel_func wheel_name="left_front" xyz="0.14 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
     <xacro:wheel_func wheel_name="left0" xyz="0.14 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <!-- <xacro:wheel_func wheel_name="left1" xyz="0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="left1" xyz="0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left2" xyz="0.025 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left3" xyz="-0.025 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="left4" xyz="-0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/> -->
+    <xacro:wheel_func wheel_name="left4" xyz="-0.075 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="left5" xyz="-0.125 -0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
 
-    <!-- <xacro:wheel_func wheel_name="left_back" xyz="-0.125 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="left_back" xyz="-0.125 -0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
-    <xacro:wheel_func wheel_name="right_front" xyz="0.14 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/> -->
+    <xacro:wheel_func wheel_name="right_front" xyz="0.14 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
     <xacro:wheel_func wheel_name="right0" xyz="0.14 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <!-- <xacro:wheel_func wheel_name="right1" xyz="0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
+    <xacro:wheel_func wheel_name="right1" xyz="0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right2" xyz="0.025 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right3" xyz="-0.025 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
-    <xacro:wheel_func wheel_name="right4" xyz="-0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/> -->
+    <xacro:wheel_func wheel_name="right4" xyz="-0.075 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
     <xacro:wheel_func wheel_name="right5" xyz="-0.125 0.095 -0.05" rpy="0 0 0" radius="0.015" length="0.05" mu="1" mu2="1"/>
 
-    <!-- <xacro:wheel_func wheel_name="right_back" xyz="-0.125 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/> -->
+    <xacro:wheel_func wheel_name="right_back" xyz="-0.125 0.095 -0.005" rpy="0 0 0" radius="0.0275" length="0.05" mu="1" mu2="1"/>
 
     <gazebo reference="${robot_name}_base_link">
-        <material>Gazebo/Green</material>
+        <material>Gazebo/${robot_color}</material>
     </gazebo>
     <gazebo reference="${robot_name}_plat_link">
         <material>Gazebo/Black</material>
@@ -181,28 +185,15 @@
     <gazebo>
         <plugin name='${robot_name}_diff_drive' filename='libgazebo_ros_planar_move.so'>
             <ros>
-                <namespace>/${robot_name}</namespace>
+                <namespace>/${robot_namespace}</namespace>
             </ros>
-            <update_rate>10</update_rate>
+            <update_rate>100</update_rate>
             <publish_rate>10</publish_rate>
             <publish_odom>true</publish_odom>
             <publish_odom_tf>true</publish_odom_tf>
 
             <odometry_frame>${robot_name}_odom</odometry_frame>
             <robot_base_frame>${robot_name}_base_footprint</robot_base_frame>
-            <!-- <leftFrontJoint>${robot_name}_left0_joint</leftFrontJoint>
-			<rightFrontJoint>${robot_name}_right0_joint</rightFrontJoint>
-			<leftRearJoint>${robot_name}_left5_joint</leftRearJoint>
-			<rightRearJoint>${robot_name}_right5_joint</rightRearJoint>
-            <commandTopic>/${robot_name}/cmd_vel</commandTopic>
-			<odometryTopic>/${robot_name}/odom</odometryTopic>
-			<odometryFrame>${robot_name}_odom</odometryFrame>
-			<odometryRate>10.0</odometryRate>
-            <publish_odom>true</publish_odom>
-            <publish_odom_tf>true</publish_odom_tf>
-            <publish_wheel_tf>true</publish_wheel_tf>
-			<robotBaseFrame>${robot_name}_base_footprint</robotBaseFrame>
-            <broadcastTF>1</broadcastTF> -->
         </plugin>
     </gazebo>
 
