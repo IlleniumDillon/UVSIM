@@ -126,7 +126,7 @@ class gridPathFinder
 		void setObs(const double coord_x, const double coord_y, const double coord_z);
 		void setObs(const int idx_x, const int idx_y, const int idx_z);
 
-		void graphSearch(Vector3d start_pt, Vector3d end_pt, bool use_jps = false);
+		double graphSearch(Vector3d start_pt, Vector3d end_pt, bool use_jps = false);
 		void resetGrid(GridNodePtr ptr);
 		void resetUsedGrids();
 

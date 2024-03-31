@@ -20,6 +20,47 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(simplanner REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(nav2_map_server REQUIRED)
+
+include_directories(include/simallocator)
+
+file(GLOB SOURCEFILE src/*.cpp)
+
+add_executable(uvallocator_node ${SOURCEFILE})
+ament_target_dependencies(
+  uvallocator_node
+  "rclcpp"
+  "simplanner"
+  "std_msgs"
+  "geometry_msgs"
+  "nav_msgs"
+  "OpenCV"
+  "Eigen3"
+  "tf2"
+  "tf2_ros"
+  "tf2_geometry_msgs"
+  "sensor_msgs"
+  "nav2_map_server"
+)
+install(TARGETS
+  uvallocator_node
+  DESTINATION lib/${PROJECT_NAME})
+
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

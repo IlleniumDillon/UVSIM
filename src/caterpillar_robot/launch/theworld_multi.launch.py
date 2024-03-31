@@ -94,7 +94,7 @@ def generate_launch_description():
         output='screen')
     ld.add_action(start_gazebo_cmd)
 
-    robots = gen_robot_list(1)
+    robots = gen_robot_list(5)
 
     spawn_robots_cmds = []
     robots_state_publisher_cmds = []

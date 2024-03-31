@@ -52,24 +52,42 @@ ament_target_dependencies(
   "nav2_map_server"
 )
 
+add_library(graph_searcher SHARED 
+  src/graph_searcher.cpp 
+  include/uvplanner/graph_searcher.hpp
+  include/uvplanner/backward.hpp
+)
+ament_target_dependencies(
+  graph_searcher
+  "rclcpp"
+  "Eigen3"
+)
+
 install(TARGETS
   uvplanner_node
   DESTINATION lib/${PROJECT_NAME})
 
-# add_executable(test_node ${TESTFILE})
-# ament_target_dependencies(
-#   test_node
-#   "rclcpp"
-#   "uvinterfaces"
-# )
-
-# install(TARGETS
-#   test_node
-#   DESTINATION lib/${PROJECT_NAME})
-
 install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}
+)
+
+ament_export_targets(graph_searcher HAS_LIBRARY_TARGET)
+ament_export_dependencies(
+  "rclcpp"
+  "Eigen3"
+)
+
+install(FILES
+  include/uvplanner/backward.hpp
+  include/uvplanner/graph_searcher.hpp
+  DESTINATION include
+)
+
+install(
+  TARGETS graph_searcher
+  EXPORT graph_searcher
+  INCLUDES DESTINATION include
 )
 
 if(BUILD_TESTING)

@@ -315,7 +315,7 @@ inline void gridPathFinder::getSucc(GridNodePtr currentPtr, vector<GridNodePtr> 
     }
 }
 
-void gridPathFinder::graphSearch(Vector3d start_pt, Vector3d end_pt, bool use_jps)
+double gridPathFinder::graphSearch(Vector3d start_pt, Vector3d end_pt, bool use_jps)
 {   
     debugNodes.clear();
 
@@ -358,7 +358,7 @@ void gridPathFinder::graphSearch(Vector3d start_pt, Vector3d end_pt, bool use_jp
         if( currentPtr->index == goalIdx ){
             RCLCPP_INFO(rclcpp::get_logger("planner"),"ok");
             gridPath = retrievePath(currentPtr);
-            return;
+            return currentPtr->gScore;
         }         
         openSet.erase(openSet.begin());
         currentPtr -> id = -1; //move current node from open set to closed set.
@@ -401,6 +401,7 @@ void gridPathFinder::graphSearch(Vector3d start_pt, Vector3d end_pt, bool use_jp
             }      
         }
     }
+    return -1;
 }
 
 bool gridPathFinder::jump(const Vector3i & curIdx, const Vector3i & expDir, Vector3i & neiIdx)
