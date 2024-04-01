@@ -29,20 +29,29 @@
             </plane>
           </geometry>
           <surface>
-            <contact>
-              <collide_bitmask>65535</collide_bitmask>
-              <ode/>
-            </contact>
             <friction>
               <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
+                <mu>1.000000</mu>
+                <mu2>1.000000</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <ode/>
-              </torsional>
             </friction>
-            <bounce/>
+            <bounce>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>1000000000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
+              </ode>
+            </contact>
           </surface>
           <max_contacts>10</max_contacts>
         </collision>
@@ -315,480 +324,480 @@
         </link>
       </model>
       <model name='obstacle'>
-        <pose>3.92032 2.10108 0.25 0 -0 0</pose>
+        <pose>3.92032 2.10108 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.92032 2.10108 0.25 0 -0 0</pose>
+          <pose>3.92032 2.10108 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone'>
-        <pose>3.91542 1.48158 0.25 0 -0 0</pose>
+        <pose>3.91542 1.48158 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.91542 1.48158 0.25 0 -0 0</pose>
+          <pose>3.91542 1.48158 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_0'>
-        <pose>3.91543 0.897046 0.25 0 -0 0</pose>
+        <pose>3.91543 0.897046 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.91543 0.897046 0.25 0 -0 0</pose>
+          <pose>3.91543 0.897046 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_1'>
-        <pose>3.3151 0.898305 0.25 0 -0 0</pose>
+        <pose>3.3151 0.898305 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.3151 0.898305 0.25 0 -0 0</pose>
+          <pose>3.3151 0.898305 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_10'>
-        <pose>0.91478 2.06313 0.25 0 -0 0</pose>
+        <pose>0.91478 2.06313 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.91478 2.06313 0.25 0 -0 0</pose>
+          <pose>0.91478 2.06313 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_11'>
-        <pose>0.893579 1.50256 0.25 0 -0 0</pose>
+        <pose>0.893579 1.50256 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.893579 1.50256 0.25 0 -0 0</pose>
+          <pose>0.893579 1.50256 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_12'>
-        <pose>3.89608 -0.884451 0.25 0 -0 0</pose>
+        <pose>3.89608 -0.884451 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.89608 -0.884451 0.25 0 -0 0</pose>
+          <pose>3.89608 -0.884451 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_13'>
-        <pose>3.91632 -1.49502 0.25 0 -0 0</pose>
+        <pose>3.91632 -1.49502 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.91632 -1.49502 0.25 0 -0 0</pose>
+          <pose>3.91632 -1.49502 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_14'>
-        <pose>3.30564 -1.52303 0.25 0 -0 0</pose>
+        <pose>3.30564 -1.52303 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.30564 -1.52303 0.25 0 -0 0</pose>
+          <pose>3.30564 -1.52303 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_15'>
-        <pose>3.30776 -2.11794 0.25 0 -0 0</pose>
+        <pose>3.30776 -2.11794 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.30776 -2.11794 0.25 0 -0 0</pose>
+          <pose>3.30776 -2.11794 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_16'>
-        <pose>3.3121 -2.73775 0.25 0 -0 0</pose>
+        <pose>3.3121 -2.73775 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>3.3121 -2.73775 0.25 0 -0 0</pose>
+          <pose>3.3121 -2.73775 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_17'>
-        <pose>2.68317 -1.51911 0.25 0 -0 0</pose>
+        <pose>2.68317 -1.51911 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>2.68317 -1.51911 0.25 0 -0 0</pose>
+          <pose>2.68317 -1.51911 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_18'>
-        <pose>2.07189 -1.52285 0.25 0 -0 0</pose>
+        <pose>2.07189 -1.52285 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>2.07189 -1.52285 0.25 0 -0 0</pose>
+          <pose>2.07189 -1.52285 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_19'>
-        <pose>1.48581 -1.50282 0.25 0 -0 0</pose>
+        <pose>1.48581 -1.50282 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>1.48581 -1.50282 0.25 0 -0 0</pose>
+          <pose>1.48581 -1.50282 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_2'>
-        <pose>2.69199 0.910463 0.25 0 -0 0</pose>
+        <pose>2.69199 0.910463 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>2.69199 0.910463 0.25 0 -0 0</pose>
+          <pose>2.69199 0.910463 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_20'>
-        <pose>2.09475 -0.904872 0.25 0 -0 0</pose>
+        <pose>2.09475 -0.904872 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>2.09475 -0.904872 0.25 0 -0 0</pose>
+          <pose>2.09475 -0.904872 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_21'>
-        <pose>0.899255 -2.08804 0.25 0 -0 0</pose>
+        <pose>0.899255 -2.08804 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.899255 -2.08804 0.25 0 -0 0</pose>
+          <pose>0.899255 -2.08804 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_22'>
-        <pose>0.297209 -2.09079 0.25 0 -0 0</pose>
+        <pose>0.297209 -2.09079 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.297209 -2.09079 0.25 0 -0 0</pose>
+          <pose>0.297209 -2.09079 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_23'>
-        <pose>-0.296477 -1.51677 0.25 0 -0 0</pose>
+        <pose>-0.296477 -1.51677 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-0.296477 -1.51677 0.25 0 -0 0</pose>
+          <pose>-0.296477 -1.51677 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_24'>
-        <pose>-0.901554 2.6911 0.25 0 -0 0</pose>
+        <pose>-0.901554 2.6911 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-0.901554 2.6911 0.25 0 -0 0</pose>
+          <pose>-0.901554 2.6911 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_25'>
-        <pose>-0.898111 2.10192 0.25 0 -0 0</pose>
+        <pose>-0.898111 2.10192 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-0.898111 2.10192 0.25 0 -0 0</pose>
+          <pose>-0.898111 2.10192 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_26'>
-        <pose>-1.5153 2.68505 0.25 0 -0 0</pose>
+        <pose>-1.5153 2.68505 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-1.5153 2.68505 0.25 0 -0 0</pose>
+          <pose>-1.5153 2.68505 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_27'>
-        <pose>-2.1056 2.69717 0.25 0 -0 0</pose>
+        <pose>-2.1056 2.69717 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.1056 2.69717 0.25 0 -0 0</pose>
+          <pose>-2.1056 2.69717 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_28'>
-        <pose>-2.71726 2.68879 0.25 0 -0 0</pose>
+        <pose>-2.71726 2.68879 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.71726 2.68879 0.25 0 -0 0</pose>
+          <pose>-2.71726 2.68879 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_29'>
-        <pose>-3.31293 2.67633 0.25 0 -0 0</pose>
+        <pose>-3.31293 2.67633 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-3.31293 2.67633 0.25 0 -0 0</pose>
+          <pose>-3.31293 2.67633 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_3'>
-        <pose>2.11146 0.922356 0.25 0 -0 0</pose>
+        <pose>2.11146 0.922356 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>2.11146 0.922356 0.25 0 -0 0</pose>
+          <pose>2.11146 0.922356 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_30'>
-        <pose>-3.90921 2.67984 0.25 0 -0 0</pose>
+        <pose>-3.90921 2.67984 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-3.90921 2.67984 0.25 0 -0 0</pose>
+          <pose>-3.90921 2.67984 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_31'>
-        <pose>-4.50406 2.69467 0.25 0 -0 0</pose>
+        <pose>-4.50406 2.69467 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-4.50406 2.69467 0.25 0 -0 0</pose>
+          <pose>-4.50406 2.69467 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_32'>
-        <pose>-3.28864 2.1154 0.25 0 -0 0</pose>
+        <pose>-3.28864 2.1154 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-3.28864 2.1154 0.25 0 -0 0</pose>
+          <pose>-3.28864 2.1154 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_33'>
-        <pose>-3.30047 1.51854 0.25 0 -0 0</pose>
+        <pose>-3.30047 1.51854 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-3.30047 1.51854 0.25 0 -0 0</pose>
+          <pose>-3.30047 1.51854 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_34'>
-        <pose>-4.4925 0.283375 0.25 0 -0 0</pose>
+        <pose>-4.4925 0.283375 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-4.4925 0.283375 0.25 0 -0 0</pose>
+          <pose>-4.4925 0.283375 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_35'>
-        <pose>-4.50835 -2.09974 0.25 0 -0 0</pose>
+        <pose>-4.50835 -2.09974 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-4.50835 -2.09974 0.25 0 -0 0</pose>
+          <pose>-4.50835 -2.09974 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_36'>
-        <pose>-4.49754 -2.71172 0.25 0 -0 0</pose>
+        <pose>-4.49754 -2.71172 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-4.49754 -2.71172 0.25 0 -0 0</pose>
+          <pose>-4.49754 -2.71172 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_37'>
-        <pose>-1.48729 0.301038 0.25 0 -0 0</pose>
+        <pose>-1.48729 0.301038 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-1.48729 0.301038 0.25 0 -0 0</pose>
+          <pose>-1.48729 0.301038 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_38'>
-        <pose>-2.10366 0.307203 0.25 0 -0 0</pose>
+        <pose>-2.10366 0.307203 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.10366 0.307203 0.25 0 -0 0</pose>
+          <pose>-2.10366 0.307203 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_39'>
-        <pose>-2.71698 -0.306143 0.25 0 -0 0</pose>
+        <pose>-2.71698 -0.306143 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.71698 -0.306143 0.25 0 -0 0</pose>
+          <pose>-2.71698 -0.306143 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_4'>
-        <pose>1.50877 0.902109 0.25 0 -0 0</pose>
+        <pose>1.50877 0.902109 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>1.50877 0.902109 0.25 0 -0 0</pose>
+          <pose>1.50877 0.902109 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_40'>
-        <pose>-2.71629 -0.903078 0.25 0 -0 0</pose>
+        <pose>-2.71629 -0.903078 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.71629 -0.903078 0.25 0 -0 0</pose>
+          <pose>-2.71629 -0.903078 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_41'>
-        <pose>-2.70624 -1.50777 0.25 0 -0 0</pose>
+        <pose>-2.70624 -1.50777 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.70624 -1.50777 0.25 0 -0 0</pose>
+          <pose>-2.70624 -1.50777 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_42'>
-        <pose>-2.7063 -2.09597 0.25 0 -0 0</pose>
+        <pose>-2.7063 -2.09597 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.7063 -2.09597 0.25 0 -0 0</pose>
+          <pose>-2.7063 -2.09597 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_43'>
-        <pose>-2.71344 -2.70204 0.25 0 -0 0</pose>
+        <pose>-2.71344 -2.70204 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.71344 -2.70204 0.25 0 -0 0</pose>
+          <pose>-2.71344 -2.70204 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_44'>
-        <pose>-3.31263 -0.912784 0.25 0 -0 0</pose>
+        <pose>-3.31263 -0.912784 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-3.31263 -0.912784 0.25 0 -0 0</pose>
+          <pose>-3.31263 -0.912784 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_45'>
-        <pose>-2.09194 -1.49692 0.25 0 -0 0</pose>
+        <pose>-2.09194 -1.49692 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>-2.09194 -1.49692 0.25 0 -0 0</pose>
+          <pose>-2.09194 -1.49692 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_5'>
-        <pose>0.90586 0.913955 0.25 0 -0 0</pose>
+        <pose>0.90586 0.913955 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.90586 0.913955 0.25 0 -0 0</pose>
+          <pose>0.90586 0.913955 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_6'>
-        <pose>2.70939 2.70606 0.25 0 -0 0</pose>
+        <pose>2.70939 2.70606 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>2.70939 2.70606 0.25 0 -0 0</pose>
+          <pose>2.70939 2.70606 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_7'>
-        <pose>0.893566 3.91336 0.25 0 -0 0</pose>
+        <pose>0.893566 3.91336 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.893566 3.91336 0.25 0 -0 0</pose>
+          <pose>0.893566 3.91336 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_8'>
-        <pose>0.893569 3.30008 0.25 0 -0 0</pose>
+        <pose>0.893569 3.30008 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.893569 3.30008 0.25 0 -0 0</pose>
+          <pose>0.893569 3.30008 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='obstacle_clone_9'>
-        <pose>0.904175 2.69756 0.25 0 -0 0</pose>
+        <pose>0.904175 2.69756 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.904175 2.69756 0.25 0 -0 0</pose>
+          <pose>0.904175 2.69756 0.26 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -815,7 +824,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -841,10 +850,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -853,48 +860,29 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
@@ -918,7 +906,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -944,10 +932,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -956,53 +942,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.91542 1.48158 0.25 0 -0 0</pose>
+      <pose>3.91542 1.48158 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_0'>
       <link name='link_0'>
@@ -1021,7 +988,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1047,10 +1014,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1059,53 +1024,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.91543 0.897046 0.25 0 -0 0</pose>
+      <pose>3.91543 0.897046 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_1'>
       <link name='link_0'>
@@ -1124,7 +1070,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1150,10 +1096,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1162,53 +1106,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.3151 0.898305 0.25 0 -0 0</pose>
+      <pose>3.3151 0.898305 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_2'>
       <link name='link_0'>
@@ -1227,7 +1152,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1253,10 +1178,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1265,53 +1188,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>2.69199 0.910463 0.25 0 -0 0</pose>
+      <pose>2.69199 0.910463 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_3'>
       <link name='link_0'>
@@ -1330,7 +1234,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1356,10 +1260,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1368,53 +1270,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>2.11146 0.922356 0.25 0 -0 0</pose>
+      <pose>2.11146 0.922356 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_4'>
       <link name='link_0'>
@@ -1433,7 +1316,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1459,10 +1342,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1471,53 +1352,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>1.50877 0.902109 0.25 0 -0 0</pose>
+      <pose>1.50877 0.902109 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_5'>
       <link name='link_0'>
@@ -1536,7 +1398,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1562,10 +1424,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1574,53 +1434,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.90586 0.913955 0.25 0 -0 0</pose>
+      <pose>0.90586 0.913955 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_6'>
       <link name='link_0'>
@@ -1639,7 +1480,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1665,10 +1506,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1677,53 +1516,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>2.70939 2.70606 0.25 0 -0 0</pose>
+      <pose>2.70939 2.70606 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_7'>
       <link name='link_0'>
@@ -1742,7 +1562,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1768,10 +1588,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1780,53 +1598,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.893566 3.91336 0.25 0 -0 0</pose>
+      <pose>0.893566 3.91336 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_8'>
       <link name='link_0'>
@@ -1845,7 +1644,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1871,10 +1670,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1883,53 +1680,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.893569 3.30008 0.25 0 -0 0</pose>
+      <pose>0.893569 3.30008 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_9'>
       <link name='link_0'>
@@ -1948,7 +1726,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -1974,10 +1752,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -1986,53 +1762,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.904175 2.69756 0.25 0 -0 0</pose>
+      <pose>0.904175 2.69756 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_10'>
       <link name='link_0'>
@@ -2051,7 +1808,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2077,10 +1834,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2089,53 +1844,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.91478 2.06313 0.25 0 -0 0</pose>
+      <pose>0.91478 2.06313 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_11'>
       <link name='link_0'>
@@ -2154,7 +1890,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2180,10 +1916,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2192,53 +1926,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.893579 1.50256 0.25 0 -0 0</pose>
+      <pose>0.893579 1.50256 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_12'>
       <link name='link_0'>
@@ -2257,7 +1972,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2283,10 +1998,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2295,53 +2008,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.89608 -0.884451 0.25 0 -0 0</pose>
+      <pose>3.89608 -0.884451 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_13'>
       <link name='link_0'>
@@ -2360,7 +2054,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2386,10 +2080,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2398,53 +2090,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.91632 -1.49502 0.25 0 -0 0</pose>
+      <pose>3.91632 -1.49502 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_14'>
       <link name='link_0'>
@@ -2463,7 +2136,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2489,10 +2162,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2501,53 +2172,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.30564 -1.52303 0.25 0 -0 0</pose>
+      <pose>3.30564 -1.52303 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_15'>
       <link name='link_0'>
@@ -2566,7 +2218,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2592,10 +2244,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2604,53 +2254,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.30776 -2.11794 0.25 0 -0 0</pose>
+      <pose>3.30776 -2.11794 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_16'>
       <link name='link_0'>
@@ -2669,7 +2300,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2695,10 +2326,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2707,53 +2336,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>3.3121 -2.73775 0.25 0 -0 0</pose>
+      <pose>3.3121 -2.73775 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_17'>
       <link name='link_0'>
@@ -2772,7 +2382,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2798,10 +2408,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2810,53 +2418,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>2.68317 -1.51911 0.25 0 -0 0</pose>
+      <pose>2.68317 -1.51911 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_18'>
       <link name='link_0'>
@@ -2875,7 +2464,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -2901,10 +2490,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -2913,53 +2500,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>2.07189 -1.52285 0.25 0 -0 0</pose>
+      <pose>2.07189 -1.52285 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_19'>
       <link name='link_0'>
@@ -2978,7 +2546,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3004,10 +2572,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3016,53 +2582,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>1.48581 -1.50282 0.25 0 -0 0</pose>
+      <pose>1.48581 -1.50282 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_20'>
       <link name='link_0'>
@@ -3081,7 +2628,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3107,10 +2654,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3119,53 +2664,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>2.09475 -0.904872 0.25 0 -0 0</pose>
+      <pose>2.09475 -0.904872 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_21'>
       <link name='link_0'>
@@ -3184,7 +2710,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3210,10 +2736,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3222,53 +2746,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.899255 -2.08804 0.25 0 -0 0</pose>
+      <pose>0.899255 -2.08804 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_22'>
       <link name='link_0'>
@@ -3287,7 +2792,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3313,10 +2818,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3325,53 +2828,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>0.297209 -2.09079 0.25 0 -0 0</pose>
+      <pose>0.297209 -2.09079 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_23'>
       <link name='link_0'>
@@ -3390,7 +2874,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3416,10 +2900,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3428,53 +2910,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-0.296477 -1.51677 0.25 0 -0 0</pose>
+      <pose>-0.296477 -1.51677 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_24'>
       <link name='link_0'>
@@ -3493,7 +2956,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3519,10 +2982,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3531,53 +2992,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-0.901554 2.6911 0.25 0 -0 0</pose>
+      <pose>-0.901554 2.6911 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_25'>
       <link name='link_0'>
@@ -3596,7 +3038,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3622,10 +3064,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3634,53 +3074,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-0.898111 2.10192 0.25 0 -0 0</pose>
+      <pose>-0.898111 2.10192 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_26'>
       <link name='link_0'>
@@ -3699,7 +3120,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3725,10 +3146,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3737,53 +3156,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-1.5153 2.68505 0.25 0 -0 0</pose>
+      <pose>-1.5153 2.68505 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_27'>
       <link name='link_0'>
@@ -3802,7 +3202,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3828,10 +3228,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3840,53 +3238,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.1056 2.69717 0.25 0 -0 0</pose>
+      <pose>-2.1056 2.69717 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_28'>
       <link name='link_0'>
@@ -3905,7 +3284,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -3931,10 +3310,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -3943,53 +3320,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.71726 2.68879 0.25 0 -0 0</pose>
+      <pose>-2.71726 2.68879 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_29'>
       <link name='link_0'>
@@ -4008,7 +3366,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4034,10 +3392,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4046,53 +3402,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-3.31293 2.67633 0.25 0 -0 0</pose>
+      <pose>-3.31293 2.67633 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_30'>
       <link name='link_0'>
@@ -4111,7 +3448,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4137,10 +3474,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4149,53 +3484,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-3.90921 2.67984 0.25 0 -0 0</pose>
+      <pose>-3.90921 2.67984 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_31'>
       <link name='link_0'>
@@ -4214,7 +3530,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4240,10 +3556,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4252,53 +3566,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-4.50406 2.69467 0.25 0 -0 0</pose>
+      <pose>-4.50406 2.69467 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_32'>
       <link name='link_0'>
@@ -4317,7 +3612,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4343,10 +3638,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4355,53 +3648,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-3.28864 2.1154 0.25 0 -0 0</pose>
+      <pose>-3.28864 2.1154 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_33'>
       <link name='link_0'>
@@ -4420,7 +3694,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4446,10 +3720,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4458,53 +3730,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-3.30047 1.51854 0.25 0 -0 0</pose>
+      <pose>-3.30047 1.51854 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_34'>
       <link name='link_0'>
@@ -4523,7 +3776,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4549,10 +3802,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4561,53 +3812,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-4.4925 0.283375 0.25 0 -0 0</pose>
+      <pose>-4.4925 0.283375 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_35'>
       <link name='link_0'>
@@ -4626,7 +3858,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4652,10 +3884,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4664,53 +3894,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-4.50835 -2.09974 0.25 0 -0 0</pose>
+      <pose>-4.50835 -2.09974 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_36'>
       <link name='link_0'>
@@ -4729,7 +3940,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4755,10 +3966,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4767,53 +3976,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-4.49754 -2.71172 0.25 0 -0 0</pose>
+      <pose>-4.49754 -2.71172 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_37'>
       <link name='link_0'>
@@ -4832,7 +4022,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4858,10 +4048,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4870,53 +4058,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-1.48729 0.301038 0.25 0 -0 0</pose>
+      <pose>-1.48729 0.301038 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_38'>
       <link name='link_0'>
@@ -4935,7 +4104,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -4961,10 +4130,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -4973,53 +4140,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.10366 0.307203 0.25 0 -0 0</pose>
+      <pose>-2.10366 0.307203 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_39'>
       <link name='link_0'>
@@ -5038,7 +4186,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -5064,10 +4212,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -5076,53 +4222,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.71698 -0.306143 0.25 0 -0 0</pose>
+      <pose>-2.71698 -0.306143 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_40'>
       <link name='link_0'>
@@ -5141,7 +4268,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -5167,10 +4294,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -5179,53 +4304,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.71629 -0.903078 0.25 0 -0 0</pose>
+      <pose>-2.71629 -0.903078 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_41'>
       <link name='link_0'>
@@ -5244,7 +4350,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -5270,10 +4376,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -5282,53 +4386,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.70624 -1.50777 0.25 0 -0 0</pose>
+      <pose>-2.70624 -1.50777 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_42'>
       <link name='link_0'>
@@ -5347,7 +4432,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -5373,10 +4458,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -5385,53 +4468,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.7063 -2.09597 0.25 0 -0 0</pose>
+      <pose>-2.7063 -2.09597 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_43'>
       <link name='link_0'>
@@ -5450,7 +4514,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -5476,10 +4540,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -5488,53 +4550,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.71344 -2.70204 0.25 0 -0 0</pose>
+      <pose>-2.71344 -2.70204 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_44'>
       <link name='link_0'>
@@ -5553,7 +4596,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -5579,10 +4622,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -5591,53 +4632,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-3.31263 -0.912784 0.25 0 -0 0</pose>
+      <pose>-3.31263 -0.912784 0.26 0 -0 0</pose>
     </model>
     <model name='obstacle_clone_45'>
       <link name='link_0'>
@@ -5656,7 +4678,7 @@
         <pose>0 -0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
         <visual name='visual'>
           <pose>0 0 0 0 -0 0</pose>
@@ -5682,10 +4704,8 @@
           <transparency>0</transparency>
           <cast_shadows>1</cast_shadows>
         </visual>
-        <collision name='collision'>
-          <laser_retro>0</laser_retro>
-          <max_contacts>10</max_contacts>
-          <pose>0 0 0 0 -0 0</pose>
+        <collision name="collision">
+          <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
           <geometry>
             <box>
               <size>0.5 0.5 0.5</size>
@@ -5694,53 +4714,34 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-                <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <mu>0.998500</mu>
+                <mu2>0.998500</mu2>
+                <fdir1>0.000000 0.000000 0.000000</fdir1>
+                <slip1>0.000000</slip1>
+                <slip2>0.000000</slip2>
               </ode>
-              <torsional>
-                <coefficient>1</coefficient>
-                <patch_radius>0</patch_radius>
-                <surface_radius>0</surface_radius>
-                <use_patch_radius>1</use_patch_radius>
-                <ode>
-                  <slip>0</slip>
-                </ode>
-              </torsional>
             </friction>
             <bounce>
-              <restitution_coefficient>0</restitution_coefficient>
-              <threshold>1e+06</threshold>
+              <restitution_coefficient>0.000000</restitution_coefficient>
+              <threshold>100000.000000</threshold>
             </bounce>
             <contact>
-              <collide_without_contact>0</collide_without_contact>
-              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-              <collide_bitmask>1</collide_bitmask>
               <ode>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0</min_depth>
+                <soft_cfm>0.000000</soft_cfm>
+                <soft_erp>0.200000</soft_erp>
+                <kp>100000.000000</kp>
+                <kd>1.000000</kd>
+                <max_vel>100.000000</max_vel>
+                <min_depth>0.001000</min_depth>
               </ode>
-              <bullet>
-                <split_impulse>1</split_impulse>
-                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-                <soft_cfm>0</soft_cfm>
-                <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
-                <kd>1</kd>
-              </bullet>
             </contact>
           </surface>
+          <laser_retro>0.000000</laser_retro>
         </collision>
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>-2.09194 -1.49692 0.25 0 -0 0</pose>
+      <pose>-2.09194 -1.49692 0.26 0 -0 0</pose>
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
