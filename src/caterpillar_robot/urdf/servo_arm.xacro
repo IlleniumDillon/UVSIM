@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="dummy_inertial" params="mass">
+		<inertial>
+			<mass value="${mass}"/>
+			<inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+		</inertial>
+	</xacro:macro>
+    <xacro:macro name="servo_arm" params="robot_name arm_name parent_link *origin">
+        <link name="${robot_name}_${arm_name}_base_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.100 0.020 0.02"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1 0.1 1.0 0.5" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.100 0.020 0.02"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1 0.1 1.0 0.5" />
+                </material>
+            </collision>
+            <xacro:dummy_inertial mass="0.01"/>
+        </link>
+        <link name="${robot_name}_${arm_name}_arm_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.100 0.020 0.02"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1 0.1 1.0 0.5" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.100 0.020 0.02"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1 0.1 1.0 0.5" />
+                </material>
+            </collision>
+            <xacro:dummy_inertial mass="0.01"/>
+        </link>
+        <link name="${robot_name}_${arm_name}_hand_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.100 0.020 0.02"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1 0.1 1.0 0.5" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.100 0.020 0.02"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="0.1 0.1 1.0 0.5" />
+                </material>
+            </collision>
+            <xacro:dummy_inertial mass="0.01"/>
+        </link>
+        <joint name="${robot_name}_${arm_name}_base_joint" type="fixed">
+            <xacro:insert_block name="origin" />
+            <!-- <origin rpy="0 0 0 " xyz="0.2 0 0"/> -->
+            <parent link="${parent_link}"/>
+            <child link="${robot_name}_${arm_name}_base_link"/>
+        </joint>
+        <joint name="${robot_name}_${arm_name}_arm_joint" type="continuous">
+            <parent link="${robot_name}_${arm_name}_base_link"/>
+            <child link="${robot_name}_${arm_name}_arm_link"/>
+            <origin xyz="0.1 0 0" rpy="0 0 0"/>
+            <axis xyz="0 1 0" />
+        </joint>
+        <joint name="${robot_name}_${arm_name}_hand_joint" type="continuous">
+            <parent link="${robot_name}_${arm_name}_arm_link"/>
+            <child link="${robot_name}_${arm_name}_hand_link"/>
+            <origin xyz="0.1 0 0" rpy="0 0 0"/>
+            <axis xyz="0 1 0" />
+        </joint>
+        <gazebo reference="${robot_name}_${arm_name}_base_link">
+            <material>Gazebo/Turquoise</material>
+        </gazebo>
+        <gazebo reference="${robot_name}_${arm_name}_arm_link">
+            <material>Gazebo/Turquoise</material>
+        </gazebo>
+        <gazebo reference="${robot_name}_${arm_name}_hand_link">
+            <material>Gazebo/Turquoise</material>
+        </gazebo>
+    </xacro:macro>
+</robot>
