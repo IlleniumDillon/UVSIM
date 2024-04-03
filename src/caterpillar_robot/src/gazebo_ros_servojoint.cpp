@@ -23,16 +23,14 @@ class GazeboRosServoJointPrivate
 {
 public:
     void OnUpdate(const gazebo::common::UpdateInfo & info);
-    void SetJointState(std_msgs::msg::Float64MultiArray::SharedPtr msg);
-    void SetJointSequence(std_msgs::msg::Float64::SharedPtr msg);
+    void SetJointState(std_msgs::msg::Float64::SharedPtr msg);
     gazebo_ros::Node::SharedPtr ros_node_;
-    rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr sub_;
-    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr subseq_;
+    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr sub_;
     gazebo::physics::ModelPtr model_;
     gazebo::physics::WorldPtr world_;
     gazebo::physics::LinkPtr reference_link_;
-    std::vector<gazebo::physics::JointPtr> joints_;
-    std::vector<double> cmds_;
+    gazebo::physics::JointPtr joint_;
+    double cmd_;
     double update_period_;
     gazebo::common::Time last_update_time_;
     gazebo::common::Time trajectory_start_time_;
@@ -79,19 +77,14 @@ void GazeboRosServoJoint::Load(gazebo::physics::ModelPtr model, sdf::ElementPtr 
             impl_->ros_node_.reset();
             return;
         }
-        impl_->joints_.push_back(joint);
+        impl_->joint_ = joint;
     }
     
     impl_->last_update_time_ = impl_->world_->SimTime();
-    impl_->sub_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float64MultiArray>(
+    impl_->sub_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float64>(
     "set_servojoint", qos.get_subscription_qos("set_servojoint", rclcpp::QoS(1)),
     std::bind(
       &GazeboRosServoJointPrivate::SetJointState,
-      impl_.get(), std::placeholders::_1));
-    impl_->subseq_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float64>(
-    "set_oneservojoint", qos.get_subscription_qos("set_oneservojoint", rclcpp::QoS(1)),
-    std::bind(
-      &GazeboRosServoJointPrivate::SetJointSequence,
       impl_.get(), std::placeholders::_1));
     impl_->update_connection_ = gazebo::event::Events::ConnectWorldUpdateBegin(
     std::bind(&GazeboRosServoJointPrivate::OnUpdate, impl_.get(), std::placeholders::_1));
@@ -115,34 +108,21 @@ void GazeboRosServoJointPrivate::OnUpdate(const gazebo::common::UpdateInfo &info
     IGN_PROFILE_BEGIN("update");
 #endif
     std::lock_guard<std::mutex> scoped_lock(lock_);
-    if(joints_.size()==cmds_.size())
-    {
-        for(int i = 0; i < joints_.size(); i++)
-        {
-            double cur = joints_.at(i)->Position(0);
-            double err = cmds_.at(i) - cur;
-            double maxAng = maxspeed * seconds_since_last_update;
-            double delta = abs(err) > maxAng ? err/abs(err)*maxAng : err;
-            joints_.at(i)->SetPosition(0,cur + delta);
-        }
-    }
+    double cur = joint_->Position(0);
+    double err = cmd_ - cur;
+    double maxAng = maxspeed * seconds_since_last_update;
+    double delta = abs(err) > maxAng ? err/abs(err)*maxAng : err;
+    joint_->SetPosition(0,cur + delta);
     new_cmds_ = false;
 
 #ifdef IGN_PROFILER_ENABLE
   IGN_PROFILE_END();
 #endif
 }
-void GazeboRosServoJointPrivate::SetJointState(std_msgs::msg::Float64MultiArray::SharedPtr msg)
-{
-    cmds_.clear();
-    cmds_.push_back(1.5);
-    new_cmds_ = true;
-}
 
-void GazeboRosServoJointPrivate::SetJointSequence(std_msgs::msg::Float64::SharedPtr msg)
+void GazeboRosServoJointPrivate::SetJointState(std_msgs::msg::Float64::SharedPtr msg)
 {
-    cmds_.clear();
-    cmds_.push_back(msg->data);
+    cmd_ = msg->data;
     new_cmds_ = true;
 }
 

@@ -30,7 +30,7 @@
         </link>
         <link name="${robot_name}_${arm_name}_arm_link">
             <visual>
-                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <origin xyz="0.05 0 0" rpy="0 0 0"/>
                 <geometry>
                     <box size="0.100 0.020 0.02"/>
                 </geometry>
@@ -39,7 +39,7 @@
                 </material>
             </visual>
             <collision>
-                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <origin xyz="0.05 0 0" rpy="0 0 0"/>
                 <geometry>
                     <box size="0.100 0.020 0.02"/>
                 </geometry>
@@ -51,18 +51,18 @@
         </link>
         <link name="${robot_name}_${arm_name}_hand_link">
             <visual>
-                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <origin xyz="0.025 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <box size="0.100 0.020 0.02"/>
+                    <box size="0.05 0.020 0.02"/>
                 </geometry>
                 <material name="blue">
                     <color rgba="0.1 0.1 1.0 0.5" />
                 </material>
             </visual>
             <collision>
-                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <origin xyz="0.025 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <box size="0.100 0.020 0.02"/>
+                    <box size="0.05 0.020 0.02"/>
                 </geometry>
                 <material name="blue">
                     <color rgba="0.1 0.1 1.0 0.5" />
@@ -79,7 +79,7 @@
         <joint name="${robot_name}_${arm_name}_arm_joint" type="continuous">
             <parent link="${robot_name}_${arm_name}_base_link"/>
             <child link="${robot_name}_${arm_name}_arm_link"/>
-            <origin xyz="0.1 0 0" rpy="0 0 0"/>
+            <origin xyz="0.05 0 0" rpy="0 0 0"/>
             <axis xyz="0 1 0" />
         </joint>
         <joint name="${robot_name}_${arm_name}_hand_joint" type="continuous">
@@ -96,6 +96,26 @@
         </gazebo>
         <gazebo reference="${robot_name}_${arm_name}_hand_link">
             <material>Gazebo/Turquoise</material>
+        </gazebo>
+        <gazebo>
+            <plugin name="${robot_name}_${arm_name}_arm_trajectory" filename="libgazebo_ros_servojoint.so">
+                <ros>
+                    <namespace>/${robot_namespace}</namespace>
+                    <remapping>set_servojoint:=${arm_name}_arm</remapping>
+                </ros>
+                <update_rate>10</update_rate>
+                <joints>${robot_name}_${arm_name}_arm_joint</joints>
+            </plugin>
+        </gazebo>
+        <gazebo>
+            <plugin name="${robot_name}_${arm_name}_hand_trajectory" filename="libgazebo_ros_servojoint.so">
+                <ros>
+                    <namespace>/${robot_namespace}</namespace>
+                    <remapping>set_servojoint:=${arm_name}_hand</remapping>
+                </ros>
+                <update_rate>10</update_rate>
+                <joints>${robot_name}_${arm_name}_hand_joint</joints>
+            </plugin>
         </gazebo>
     </xacro:macro>
 </robot>

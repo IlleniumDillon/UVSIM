@@ -139,7 +139,7 @@
     <joint name="${robot_name}_laser_joint" type="fixed">
         <parent link="${robot_name}_plat_link"/>
         <child link="${robot_name}_laser_link"/>
-        <origin xyz="0.055 0.0 0.05" rpy="0 0 0"/>
+        <origin xyz="0.055 0.0 0.08" rpy="0 0 0"/>
     </joint>
     <joint name="${robot_name}_tripod_joint" type="revolute">
         <parent link="${robot_name}_plat_link"/>
@@ -192,7 +192,7 @@
 
     <xacro:include filename="$(find caterpillar_robot)/urdf/servo_arm.xacro"/>
     <xacro:servo_arm robot_name="${robot_name}" arm_name="arm" parent_link="${robot_name}_base_link">
-        <origin rpy="0 0 0 " xyz="0.2 0 0"/>
+        <origin rpy="0 0 0 " xyz="0.15 0 -0.01"/>
     </xacro:servo_arm>
 
 
@@ -254,7 +254,7 @@
         <plugin name="${robot_name}_tripod_trajectory" filename="libgazebo_ros_servojoint.so">
             <ros>
                 <namespace>/${robot_namespace}</namespace>
-                <!-- <remapping>set_joint_trajectory:=tripod</remapping> -->
+                <remapping>set_servojoint:=tripod</remapping>
             </ros>
             <update_rate>10</update_rate>
             <joints>${robot_name}_tripod_joint</joints>
