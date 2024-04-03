@@ -12,6 +12,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/float64_multi_array.hpp>
 #include <std_msgs/msg/float64.hpp>
+#include <simbridge/msg/model_state.h>
 
 #include <memory>
 #include <string>

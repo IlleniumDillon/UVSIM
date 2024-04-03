@@ -32,6 +32,7 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(nav2_map_server REQUIRED)
+find_package(simbridge REQUIRED)
 
 include_directories(include/simallocator)
 
@@ -52,7 +53,18 @@ ament_target_dependencies(
   "tf2_geometry_msgs"
   "sensor_msgs"
   "nav2_map_server"
+  "simbridge"
 )
+
+add_library(hungarian_algorithm SHARED 
+  src/hungarian_algorithm.cpp 
+  include/simallocator/hungarian_algorithm.hpp
+)
+ament_target_dependencies(
+  hungarian_algorithm
+  "Eigen3"
+)
+
 install(TARGETS
   uvallocator_node
   DESTINATION lib/${PROJECT_NAME})
@@ -60,6 +72,22 @@ install(TARGETS
 install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}
+)
+
+ament_export_targets(hungarian_algorithm HAS_LIBRARY_TARGET)
+ament_export_dependencies(
+  "Eigen3"
+)
+
+install(FILES
+  include/simallocator/hungarian_algorithm.hpp
+  DESTINATION include
+)
+
+install(
+  TARGETS hungarian_algorithm
+  EXPORT hungarian_algorithm
+  INCLUDES DESTINATION include
 )
 
 if(BUILD_TESTING)

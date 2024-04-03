@@ -24,6 +24,7 @@ find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(trajectory_msgs REQUIRED)
+find_package(simbridge REQUIRED)
 
 include_directories(include/caterpillar_robot)
 link_directories(${gazebo_dev_LIBRARY_DIRS})
@@ -47,14 +48,37 @@ if(ENABLE_PROFILER)
   target_link_libraries(gazebo_ros_servojoint ${ignition-common3_LIBRARIES})
 endif()
 
-install(DIRECTORY include/
-        DESTINATION include)
-
 install(TARGETS
   gazebo_ros_servojoint
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
+
+add_library(gazebo_ros_modelstate SHARED
+  src/gazebo_ros_modelstate.cpp
+)
+target_include_directories(gazebo_ros_modelstate PUBLIC include)
+ament_target_dependencies(gazebo_ros_modelstate
+  "gazebo_dev"
+  "gazebo_ros"
+  "rclcpp"
+  "trajectory_msgs"
+  "simbridge"
+)
+ament_export_libraries(gazebo_ros_modelstate)
+if(ENABLE_PROFILER)
+  target_include_directories(gazebo_ros_modelstate PUBLIC ${ignition-common3_INCLUDE_DIRS})
+  target_link_libraries(gazebo_ros_modelstate ${ignition-common3_LIBRARIES})
+endif()
+
+install(TARGETS
+  gazebo_ros_modelstate
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
+install(DIRECTORY include/
+  DESTINATION include)
 
 install(DIRECTORY launch urdf worlds meshes config map rviz DESTINATION share/${PROJECT_NAME})
 
