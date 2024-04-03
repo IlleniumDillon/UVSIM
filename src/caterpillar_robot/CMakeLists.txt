@@ -28,19 +28,7 @@ find_package(trajectory_msgs REQUIRED)
 include_directories(include/caterpillar_robot)
 link_directories(${gazebo_dev_LIBRARY_DIRS})
 
-file(GLOB SOURCEFILES src/set_joint_state_node.cpp)
 file(GLOB PLUGINFILE src/gazebo_ros_servojoint.cpp)
-
-add_executable(set_joint_state_node ${SOURCEFILES})
-ament_target_dependencies(
-  set_joint_state_node
-  "rclcpp"
-  "std_msgs"
-  "trajectory_msgs"
-)
-install(TARGETS
-  set_joint_state_node
-  DESTINATION lib/${PROJECT_NAME})
 
 # gazebo_ros_joint_pose_trajectory
 add_library(gazebo_ros_servojoint SHARED
