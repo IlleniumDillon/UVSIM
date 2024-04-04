@@ -9,7 +9,7 @@ namespace gazebo_plugins
 {
 class GazeboRosModelStatePrivate;
 
-class GazeboRosModelState : public gazebo::ModelPlugin
+class GazeboRosModelState : public gazebo::WorldPlugin
 {
 public:
   /// Constructor
@@ -20,7 +20,7 @@ public:
 
 protected:
   // Documentation inherited
-  void Load(gazebo::physics::ModelPtr model, sdf::ElementPtr sdf) override;
+  void Load(gazebo::physics::WorldPtr world, sdf::ElementPtr sdf) override;
 
 private:
   /// Private data pointer
