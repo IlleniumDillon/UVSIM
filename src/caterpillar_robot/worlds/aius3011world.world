@@ -323,7 +323,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle'>
+      <model name='obstacle00'>
         <pose>3.92032 2.10108 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -333,7 +333,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone'>
+      <model name='obstacle01'>
         <pose>3.91542 1.48158 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -343,7 +343,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_0'>
+      <model name='obstacle02'>
         <pose>3.91543 0.897046 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -353,7 +353,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_1'>
+      <model name='obstacle03'>
         <pose>3.3151 0.898305 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -363,7 +363,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_10'>
+      <model name='obstacle04'>
         <pose>0.91478 2.06313 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -373,7 +373,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_11'>
+      <model name='obstacle05'>
         <pose>0.893579 1.50256 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -383,7 +383,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_12'>
+      <model name='obstacle06'>
         <pose>3.89608 -0.884451 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -393,7 +393,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_13'>
+      <model name='obstacle07'>
         <pose>3.91632 -1.49502 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -403,7 +403,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_14'>
+      <model name='obstacle08'>
         <pose>3.30564 -1.52303 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -413,7 +413,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_15'>
+      <model name='obstacle09'>
         <pose>3.30776 -2.11794 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -423,7 +423,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_16'>
+      <model name='obstacle10'>
         <pose>3.3121 -2.73775 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -433,7 +433,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_17'>
+      <model name='obstacle11'>
         <pose>2.68317 -1.51911 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -443,7 +443,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_18'>
+      <model name='obstacle12'>
         <pose>2.07189 -1.52285 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -453,7 +453,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_19'>
+      <model name='obstacle13'>
         <pose>1.48581 -1.50282 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -463,7 +463,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_2'>
+      <model name='obstacle14'>
         <pose>2.69199 0.910463 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -473,7 +473,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_20'>
+      <model name='obstacle15'>
         <pose>2.09475 -0.904872 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -483,7 +483,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_21'>
+      <model name='obstacle16'>
         <pose>0.899255 -2.08804 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -493,7 +493,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_22'>
+      <model name='obstacle17'>
         <pose>0.297209 -2.09079 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -503,7 +503,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_23'>
+      <model name='obstacle18'>
         <pose>-0.296477 -1.51677 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -513,7 +513,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_24'>
+      <model name='obstacle19'>
         <pose>-0.901554 2.6911 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -523,7 +523,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_25'>
+      <model name='obstacle20'>
         <pose>-0.898111 2.10192 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -533,7 +533,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_26'>
+      <model name='obstacle21'>
         <pose>-1.5153 2.68505 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -543,7 +543,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_27'>
+      <model name='obstacle22'>
         <pose>-2.1056 2.69717 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -553,7 +553,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_28'>
+      <model name='obstacle23'>
         <pose>-2.71726 2.68879 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -563,7 +563,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_29'>
+      <model name='obstacle24'>
         <pose>-3.31293 2.67633 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -573,7 +573,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_3'>
+      <model name='obstacle25'>
         <pose>2.11146 0.922356 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -583,7 +583,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_30'>
+      <model name='obstacle26'>
         <pose>-3.90921 2.67984 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -593,7 +593,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_31'>
+      <model name='obstacle27'>
         <pose>-4.50406 2.69467 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -603,7 +603,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_32'>
+      <model name='obstacle28'>
         <pose>-3.28864 2.1154 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -613,7 +613,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_33'>
+      <model name='obstacle29'>
         <pose>-3.30047 1.51854 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -623,7 +623,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_34'>
+      <model name='obstacle30'>
         <pose>-4.4925 0.283375 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -633,7 +633,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_35'>
+      <model name='obstacle31'>
         <pose>-4.50835 -2.09974 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -643,7 +643,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_36'>
+      <model name='obstacle32'>
         <pose>-4.49754 -2.71172 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -653,7 +653,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_37'>
+      <model name='obstacle33'>
         <pose>-1.48729 0.301038 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -663,7 +663,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_38'>
+      <model name='obstacle34'>
         <pose>-2.10366 0.307203 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -673,7 +673,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_39'>
+      <model name='obstacle35'>
         <pose>-2.71698 -0.306143 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -683,7 +683,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_4'>
+      <model name='obstacle36'>
         <pose>1.50877 0.902109 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -693,7 +693,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_40'>
+      <model name='obstacle37'>
         <pose>-2.71629 -0.903078 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -703,7 +703,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_41'>
+      <model name='obstacle38'>
         <pose>-2.70624 -1.50777 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -713,7 +713,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_42'>
+      <model name='obstacle39'>
         <pose>-2.7063 -2.09597 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -723,7 +723,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_43'>
+      <model name='obstacle40'>
         <pose>-2.71344 -2.70204 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -733,7 +733,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_44'>
+      <model name='obstacle41'>
         <pose>-3.31263 -0.912784 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -743,7 +743,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_45'>
+      <model name='obstacle42'>
         <pose>-2.09194 -1.49692 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -753,7 +753,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_5'>
+      <model name='obstacle43'>
         <pose>0.90586 0.913955 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -763,7 +763,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_6'>
+      <model name='obstacle44'>
         <pose>2.70939 2.70606 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -773,7 +773,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_7'>
+      <model name='obstacle45'>
         <pose>0.893566 3.91336 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -783,7 +783,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_8'>
+      <model name='obstacle46'>
         <pose>0.893569 3.30008 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -793,7 +793,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacle_clone_9'>
+      <model name='obstacle47'>
         <pose>0.904175 2.69756 0.26 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -807,7 +807,7 @@
         <pose>0 0 10 0 -0 0</pose>
       </light>
     </state>
-    <model name='obstacle'>
+    <model name='obstacle00'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -889,7 +889,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>4.32384 3.03573 0.5 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone'>
+    <model name='obstacle01'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -971,7 +971,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.91542 1.48158 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_0'>
+    <model name='obstacle02'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1053,7 +1053,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.91543 0.897046 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_1'>
+    <model name='obstacle03'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1135,7 +1135,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.3151 0.898305 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_2'>
+    <model name='obstacle04'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1217,7 +1217,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>2.69199 0.910463 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_3'>
+    <model name='obstacle05'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1299,7 +1299,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>2.11146 0.922356 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_4'>
+    <model name='obstacle06'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1381,7 +1381,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>1.50877 0.902109 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_5'>
+    <model name='obstacle07'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1463,7 +1463,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.90586 0.913955 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_6'>
+    <model name='obstacle08'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1545,7 +1545,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>2.70939 2.70606 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_7'>
+    <model name='obstacle09'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1627,7 +1627,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.893566 3.91336 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_8'>
+    <model name='obstacle10'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1709,7 +1709,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.893569 3.30008 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_9'>
+    <model name='obstacle11'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1791,7 +1791,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.904175 2.69756 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_10'>
+    <model name='obstacle12'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1873,7 +1873,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.91478 2.06313 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_11'>
+    <model name='obstacle13'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -1955,7 +1955,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.893579 1.50256 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_12'>
+    <model name='obstacle14'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2037,7 +2037,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.89608 -0.884451 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_13'>
+    <model name='obstacle15'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2119,7 +2119,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.91632 -1.49502 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_14'>
+    <model name='obstacle16'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2201,7 +2201,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.30564 -1.52303 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_15'>
+    <model name='obstacle17'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2283,7 +2283,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.30776 -2.11794 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_16'>
+    <model name='obstacle18'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2365,7 +2365,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.3121 -2.73775 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_17'>
+    <model name='obstacle19'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2447,7 +2447,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>2.68317 -1.51911 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_18'>
+    <model name='obstacle20'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2529,7 +2529,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>2.07189 -1.52285 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_19'>
+    <model name='obstacle21'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2611,7 +2611,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>1.48581 -1.50282 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_20'>
+    <model name='obstacle22'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2693,7 +2693,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>2.09475 -0.904872 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_21'>
+    <model name='obstacle23'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2775,7 +2775,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.899255 -2.08804 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_22'>
+    <model name='obstacle24'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2857,7 +2857,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>0.297209 -2.09079 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_23'>
+    <model name='obstacle25'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -2939,7 +2939,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-0.296477 -1.51677 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_24'>
+    <model name='obstacle26'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3021,7 +3021,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-0.901554 2.6911 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_25'>
+    <model name='obstacle27'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3103,7 +3103,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-0.898111 2.10192 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_26'>
+    <model name='obstacle28'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3185,7 +3185,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-1.5153 2.68505 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_27'>
+    <model name='obstacle29'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3267,7 +3267,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.1056 2.69717 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_28'>
+    <model name='obstacle30'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3349,7 +3349,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.71726 2.68879 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_29'>
+    <model name='obstacle31'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3431,7 +3431,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-3.31293 2.67633 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_30'>
+    <model name='obstacle32'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3513,7 +3513,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-3.90921 2.67984 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_31'>
+    <model name='obstacle33'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3595,7 +3595,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-4.50406 2.69467 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_32'>
+    <model name='obstacle34'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3677,7 +3677,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-3.28864 2.1154 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_33'>
+    <model name='obstacle35'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3759,7 +3759,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-3.30047 1.51854 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_34'>
+    <model name='obstacle36'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3841,7 +3841,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-4.4925 0.283375 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_35'>
+    <model name='obstacle37'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -3923,7 +3923,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-4.50835 -2.09974 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_36'>
+    <model name='obstacle38'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4005,7 +4005,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-4.49754 -2.71172 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_37'>
+    <model name='obstacle39'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4087,7 +4087,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-1.48729 0.301038 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_38'>
+    <model name='obstacle40'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4169,7 +4169,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.10366 0.307203 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_39'>
+    <model name='obstacle41'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4251,7 +4251,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.71698 -0.306143 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_40'>
+    <model name='obstacle42'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4333,7 +4333,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.71629 -0.903078 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_41'>
+    <model name='obstacle43'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4415,7 +4415,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.70624 -1.50777 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_42'>
+    <model name='obstacle44'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4497,7 +4497,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.7063 -2.09597 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_43'>
+    <model name='obstacle45'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4579,7 +4579,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-2.71344 -2.70204 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_44'>
+    <model name='obstacle46'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>
@@ -4661,7 +4661,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-3.31263 -0.912784 0.26 0 -0 0</pose>
     </model>
-    <model name='obstacle_clone_45'>
+    <model name='obstacle47'>
       <link name='link_0'>
         <inertial>
           <mass>0.1</mass>

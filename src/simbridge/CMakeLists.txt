@@ -17,8 +17,20 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+
+
+include_directories(${OpenCV_INCLUDE_DIRS}) 
+include_directories(include/simbridge)
+include_directories(${INSTALL}})
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -26,6 +38,28 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ModelState.msg"
   DEPENDENCIES geometry_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
 )
+
+file(GLOB SOURCEFILE src/*.cpp)
+
+add_executable(world_map_node ${SOURCEFILE})
+ament_target_dependencies(
+  world_map_node
+  "rclcpp"
+  "geometry_msgs"
+  "nav_msgs"
+  "OpenCV"
+  "tf2"
+  "tf2_ros"
+  "tf2_geometry_msgs"
+)
+rosidl_target_interfaces(world_map_node
+  ${PROJECT_NAME} "rosidl_typesupport_cpp"
+)
+
+install(TARGETS
+  world_map_node
+  DESTINATION lib/${PROJECT_NAME})
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
