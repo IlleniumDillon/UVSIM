@@ -27,6 +27,26 @@ find_package(simallocator REQUIRED)
 
 include_directories(include/sa_task_sokoban)
 
+file(GLOB SOURCEFILE src/*.cpp)
+
+add_executable(sa_socoban_node ${SOURCEFILE})
+ament_target_dependencies(
+  sa_socoban_node
+  "rclcpp"
+  "geometry_msgs"
+  "nav_msgs"
+  "tf2"
+  "tf2_ros"
+  "tf2_geometry_msgs"
+  "simbridge"
+  "simplanner"
+  "simallocator"
+)
+
+install(TARGETS
+  sa_socoban_node
+  DESTINATION lib/${PROJECT_NAME})
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

@@ -29,13 +29,13 @@ find_package(tf2_geometry_msgs REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS}) 
 include_directories(include/simbridge)
-include_directories(${INSTALL}})
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ModelState.msg"
+  "msg/ModelIgnore.msg"
   DEPENDENCIES geometry_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
 )
 

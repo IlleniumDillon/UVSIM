@@ -1,9 +1,5 @@
 #include "WorldMapUpdater.hpp"
-
-class SimObject
-{
-
-};
+#include <algorithm> 
 
 WorldMapUpdater::WorldMapUpdater(double width, double hight, double wallthickness, double ori_x, double ori_y, double res) : Node("WorldMapUpdater")
 {
@@ -22,10 +18,14 @@ WorldMapUpdater::WorldMapUpdater(double width, double hight, double wallthicknes
 
     RCLCPP_INFO(this->get_logger(),"Map Size:[%d,%d]",MapBlank.rows,MapBlank.cols);
 
-    sub_ = this->create_subscription<simbridge::msg::ModelState>(
+    sub_model = this->create_subscription<simbridge::msg::ModelState>(
         "model_states",1,std::bind(&WorldMapUpdater::modelStateCallback,this,std::placeholders::_1)
     );
-    pub_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("map",1);
+    sub_ignore = this->create_subscription<simbridge::msg::ModelIgnore>(
+        "model_ignore",1,std::bind(&WorldMapUpdater::modelIgnoreCallback,this,std::placeholders::_1)
+    );
+    pub_ori = this->create_publisher<nav_msgs::msg::OccupancyGrid>("map",1);
+    pub_dil = this->create_publisher<nav_msgs::msg::OccupancyGrid>("map_dil",1);
 }
 
 void WorldMapUpdater::modelStateCallback(const simbridge::msg::ModelState::SharedPtr msg)
@@ -40,6 +40,7 @@ void WorldMapUpdater::modelStateCallback(const simbridge::msg::ModelState::Share
     std::vector<std::vector<cv::Point>>objVertexs;
     for(int i = 0; i < objectNum; i++)
     {
+        if(ignoreNames.end()!=std::find(ignoreNames.begin(),ignoreNames.end(),msg->model_names.at(i))) continue;
         std::string substr = msg->model_names.at(i).substr(0,3);
         if(substr == "obs")
         {
@@ -63,6 +64,8 @@ void WorldMapUpdater::modelStateCallback(const simbridge::msg::ModelState::Share
         }
     }
     cv::fillPoly(MapFull,objVertexs,cv::Scalar(255));
+    cv::Mat MapDilate;
+    cv::dilate(MapFull,MapDilate,cv::getStructuringElement(cv::MorphShapes::MORPH_RECT,cv::Size(10,10)));
 
     nav_msgs::msg::OccupancyGrid map;
     map.header.frame_id="map";
@@ -81,5 +84,28 @@ void WorldMapUpdater::modelStateCallback(const simbridge::msg::ModelState::Share
         }
     }
 
-    pub_->publish(map);
+    nav_msgs::msg::OccupancyGrid map_dil;
+    map_dil.header.frame_id="map_dil";
+    map_dil.info.height = MapBlank.rows;
+    map_dil.info.width = MapBlank.cols;
+    map_dil.info.resolution = resolution;
+    map_dil.info.origin.position.x = origin_x;
+    map_dil.info.origin.position.y = origin_y;
+    map_dil.info.origin.position.z = origin_z;
+    
+    for(int row = 0; row < MapBlank.rows; row++)
+    {
+        for(int col = 0; col < MapBlank.cols; col++)
+        {
+            map_dil.data.push_back(MapDilate.at<uchar>(row,col) / 255 * 100);
+        }
+    }
+
+    pub_ori->publish(map);
+    pub_dil->publish(map_dil);
+}
+
+void WorldMapUpdater::modelIgnoreCallback(const simbridge::msg::ModelIgnore::SharedPtr msg)
+{
+    ignoreNames = msg->model_names;
 }
