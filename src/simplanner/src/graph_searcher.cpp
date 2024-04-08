@@ -39,6 +39,22 @@ void gridPathFinder::initGridMap(double _resolution, Vector3d global_xyz_l, Vect
     }
 }
 
+void gridPathFinder::deleteGridMap()
+{
+    resetUsedGrids();
+    if(data!=nullptr)
+    {
+        delete[] data;
+        data = nullptr;
+    }
+    
+    if(GridNodeMap!=nullptr)
+    {
+        delete[] GridNodeMap;
+        GridNodeMap = nullptr;
+    }
+}
+
 void gridPathFinder::resetGrid(GridNodePtr ptr)
 {
     ptr->id = 0;

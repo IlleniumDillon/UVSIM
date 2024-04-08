@@ -25,6 +25,7 @@ find_package(simbridge REQUIRED)
 find_package(simplanner REQUIRED)
 find_package(simallocator REQUIRED)
 
+
 include_directories(include/sa_task_sokoban)
 
 file(GLOB SOURCEFILE src/*.cpp)
@@ -41,6 +42,7 @@ ament_target_dependencies(
   "simbridge"
   "simplanner"
   "simallocator"
+  "sensor_msgs"
 )
 
 install(TARGETS

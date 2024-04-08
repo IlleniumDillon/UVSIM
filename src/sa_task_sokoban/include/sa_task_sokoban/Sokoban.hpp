@@ -12,6 +12,7 @@
 #include "hungarian_algorithm.hpp"
 #include "std_msgs/msg/float64.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include "sensor_msgs/msg/laser_scan.hpp"
 
 using namespace std::chrono_literals;
 
@@ -35,6 +36,8 @@ public:
     Sokoban();
     void timerCallback();
 private:
+    void updatePose();
+
     rclcpp::TimerBase::SharedPtr timer;
 
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel;
@@ -45,6 +48,7 @@ private:
     rclcpp::Subscription<simbridge::msg::ModelState>::SharedPtr sub_model_state;
     rclcpp::Subscription<simbridge::msg::ModelState>::SharedPtr sub_task;
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr sub_map_dilate;
+    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr sub_scan;
 
     std::shared_ptr<graphSearchPrivate> impl_graphsearcher;
     std::shared_ptr<APFSolverPrivate> impl_apfsolver;
@@ -53,4 +57,19 @@ private:
 
     ExecState curState = BeforeInit;
     ExecState lastState = BeforeInit;
+
+    std::string robotName;
+    std::string armName;
+
+    std::shared_ptr<tf2_ros::TransformListener> tf_listener{nullptr};
+    std::unique_ptr<tf2_ros::Buffer> tf_buffer;
+
+    geometry_msgs::msg::TransformStamped t;
+    geometry_msgs::msg::Quaternion q;
+    tf2::Quaternion quat;
+    std::string fromFrameRel;
+    std::string toFrameRel;
+
+    Vector3d CurrPos;
+    Vector3d CurrRPY;
 };

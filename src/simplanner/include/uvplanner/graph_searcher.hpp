@@ -92,9 +92,9 @@ class gridPathFinder
 	
 		Vector3i goalIdx;
 
-		uint8_t * data;
+		uint8_t * data = nullptr;
 
-		GridNodePtr *** GridNodeMap;
+		GridNodePtr *** GridNodeMap = nullptr;
 		std::multimap<double, GridNodePtr> openSet;
 		JPS3DNeib * jn3d;
 
@@ -123,6 +123,7 @@ class gridPathFinder
 		};
 
 		void initGridMap(double _resolution, Vector3d global_xyz_l, Vector3d global_xyz_u, int max_x_id, int max_y_id, int max_z_id);
+		void deleteGridMap();
 		void setObs(const double coord_x, const double coord_y, const double coord_z);
 		void setObs(const int idx_x, const int idx_y, const int idx_z);
 
