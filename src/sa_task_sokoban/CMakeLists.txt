@@ -30,7 +30,7 @@ include_directories(include/sa_task_sokoban)
 
 file(GLOB SOURCEFILE src/*.cpp)
 
-add_executable(sa_socoban_node ${SOURCEFILE})
+add_executable(sa_socoban_node src/sa_socoban_node.cpp src/Sokoban.cpp)
 ament_target_dependencies(
   sa_socoban_node
   "rclcpp"
@@ -47,6 +47,25 @@ ament_target_dependencies(
 
 install(TARGETS
   sa_socoban_node
+  DESTINATION lib/${PROJECT_NAME})
+
+add_executable(sa_task_publish src/sa_publish_task.cpp)
+ament_target_dependencies(
+  sa_task_publish
+  "rclcpp"
+  "geometry_msgs"
+  "nav_msgs"
+  "tf2"
+  "tf2_ros"
+  "tf2_geometry_msgs"
+  "simbridge"
+  "simplanner"
+  "simallocator"
+  "sensor_msgs"
+)
+
+install(TARGETS
+  sa_task_publish
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

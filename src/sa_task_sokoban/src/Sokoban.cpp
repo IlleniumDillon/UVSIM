@@ -46,19 +46,123 @@ public:
     {
         goalRPY = rpy;
     }
-    void update()
+    void update(Vector3d& curPos, Vector3d& curRPY)
     {
+        Vector3d err3d = curPos - path.back();
+        Vector2d err(err3d.x(),err3d.y());
+        double yawerr = curRPY.z() - goalRPY.z();
+        if(err.norm() > 0.1)
+        {
+            reachFlag = false;
+            Vector3d Ftal(0,0,0);
+            for(int i = 0; i < laserData.ranges.size(); i++)
+            {
+                double rotate = curRPY(2) + laserData.angle_min + i*laserData.angle_increment;
+                Vector3d obs(
+                    curPos(0) + cos(rotate)*laserData.ranges.at(i),
+                    curPos(1) + sin(rotate)*laserData.ranges.at(i),
+                    curPos(2)
+                );
+                Ftal += repulsion(obs,curPos,laserData.ranges.at(i),2,0.25);
+            }
 
+            double minDis = std::numeric_limits<double>::max();
+            int minIndx = -1;
+            for(int indx = 0; indx < path.size(); indx++)
+            {
+                Vector3d P0 = path.at(indx) - curPos;
+                double dis = P0.norm();
+                if(dis < minDis) 
+                {
+                    minDis = dis;
+                    minIndx = indx;
+                }
+            }
+
+            int forward = minIndx+10;
+            forward = forward<path.size()?forward:path.size()-1;
+            for(int indx = minIndx; indx < forward; indx++)
+            {
+                Ftal += gravitation(path.at(indx),curPos,3);
+            }
+            // if(path.size()>0)
+            // Ftal += gravitation(path.at(forward),curPos,3);
+            Matrix3d rotation_matrix(AngleAxisd(-curRPY(2),Vector3d::UnitZ()));
+            Ftal=rotation_matrix*Ftal;
+            
+            double fx = Ftal(0),fy = Ftal(1);
+            if(fx > 1) fx = 0.3;
+            if(fx < -1) fx = -0.3;
+            if(fy > 1) fy = 0.3;
+            if(fy < -1) fy = -0.3;
+
+            cmd_vel.linear.x = fx;
+            cmd_vel.linear.y = 0;
+            cmd_vel.linear.z = 0;
+            cmd_vel.angular.x = 0;
+            cmd_vel.angular.y = 0;
+            cmd_vel.angular.z = fy;
+        }
+        else if(abs(yawerr) > 0.1)
+        {
+            reachFlag = false;
+            if(yawerr > 0)
+            {
+                cmd_vel.linear.x = 0;
+                cmd_vel.linear.y = 0;
+                cmd_vel.linear.z = 0;
+                cmd_vel.angular.x = 0;
+                cmd_vel.angular.y = 0;
+                cmd_vel.angular.z = -0.1;
+            }
+            else
+            {
+                cmd_vel.linear.x = 0;
+                cmd_vel.linear.y = 0;
+                cmd_vel.linear.z = 0;
+                cmd_vel.angular.x = 0;
+                cmd_vel.angular.y = 0;
+                cmd_vel.angular.z = 0.1;
+            }
+        }
+        else
+        {
+            cmd_vel.linear.x = 0;
+            cmd_vel.linear.y = 0;
+            cmd_vel.linear.z = 0;
+            cmd_vel.angular.x = 0;
+            cmd_vel.angular.y = 0;
+            cmd_vel.angular.z = 0;
+            reachFlag = true;
+        }
     }
     void updateScanCallback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
     {
-        scan = *msg;
+        laserData = *msg;
     }
-    sensor_msgs::msg::LaserScan scan;
+    sensor_msgs::msg::LaserScan laserData;
     std::vector<Vector3d> path;
     Vector3d goalRPY;
     geometry_msgs::msg::Twist cmd_vel;
     bool reachFlag = false;
+private:
+    Vector3d gravitation(Vector3d& source, Vector3d& object, double katt)
+    {
+        Vector3d P0 = object - source;
+        Vector3d Fatt = -katt * P0;
+        return Fatt;
+    }
+    Vector3d repulsion(Vector3d &source, Vector3d &object, float& dis, double krep, double range)
+    {
+        Vector3d Frep(0,0,0);
+        if(dis < range)
+        {
+            Vector3d P0 = object - source;
+            double frep_dis = krep*(1/dis - 1/range)*(1/dis/dis)/dis;
+            Frep = frep_dis * P0;
+        }
+        return Frep;
+    }
 };
 class hungarianPrivate
 {
@@ -85,19 +189,60 @@ public:
         arm_arm.data = -2;
         arm_hand.data = 2;
     }
-    void generateGoal()
+    void generateGoal(std::shared_ptr<graphSearchPrivate> pTool)
     {
+        goalPosList.clear();
+        goalRPYList.clear();
 
+        std::string modelName = taskList.model_names.at(curTaskIndx);
+        int indx = -1;
+        for(int i = 0; i < model_state.model_names.size(); i++)
+        {
+            if(modelName == model_state.model_names.at(i))
+            {
+                indx = i;
+                break;
+            }
+        }
+        if(indx == -1)
+        {
+            RCLCPP_ERROR(rclcpp::get_logger("generateGoal"),"no model named:%s",modelName.c_str());
+            return;
+        }
+        geometry_msgs::msg::Pose curState = model_state.model_poses.at(indx);
+        geometry_msgs::msg::Pose tarState = taskList.model_poses.at(curTaskIndx);
+
+        Vector3d boxCurPos(curState.position.x,curState.position.y,curState.position.z);
+        Vector3d boxTarPos(tarState.position.x,tarState.position.y,tarState.position.z);
+
+        pTool->solver.graphSearch(boxCurPos,boxTarPos);
+        goalPosList = pTool->solver.getPath();
+        pTool->solver.resetUsedGrids();
+
+        for(int i = 0; i < goalPosList.size()-1; i++)
+        {
+            int j = i+1;
+            double x1 = goalPosList.at(i).x();
+            double y1 = goalPosList.at(i).y();
+            double x2 = goalPosList.at(j).x();
+            double y2 = goalPosList.at(j).y();
+            double yaw = atan2(y2-y1,x2-x1);
+            goalRPYList.push_back(Vector3d(0,0,yaw));
+            goalPosList.at(i).x() -= length_m*cos(yaw);
+            goalPosList.at(i).y() -= length_m*sin(yaw);
+        }
     }
     simbridge::msg::ModelState model_state;
     simbridge::msg::ModelState taskList;
-    Vector3d goalPos;
-    Vector3d goalRPY;
+    std::vector<Vector3d> goalPosList;
+    std::vector<Vector3d> goalRPYList;
     int curTaskIndx = -1;
 
     simbridge::msg::ModelIgnore ignore;
     std_msgs::msg::Float64 arm_arm;
     std_msgs::msg::Float64 arm_hand;
+
+    double length_m = 0.6;
 };
 
 Sokoban::Sokoban() 
@@ -217,24 +362,26 @@ void Sokoban::timerCallback()
         {
             if(updateMap == true)
             {
+                RCLCPP_INFO(this->get_logger(),"Current state: Shift; update map");
                 updateMap = false;
                 impl_graphsearcher->updateMap();
                 /// get goal
-                impl_taskexecutor->generateGoal();
-                Vector3d goalPos = impl_taskexecutor->goalPos;
-                Vector3d goalRPY = impl_taskexecutor->goalRPY;
+                impl_taskexecutor->generateGoal(impl_graphsearcher);
+                Vector3d goalPos = impl_taskexecutor->goalPosList.front();
+                Vector3d goalRPY = impl_taskexecutor->goalRPYList.front();
                 /// get path
-                impl_graphsearcher->solver.resetUsedGrids();
                 impl_graphsearcher->solver.graphSearch(CurrPos,goalPos);
                 /// set path to apf
                 impl_apfsolver->setGoalRPY(goalRPY);
                 impl_apfsolver->setPath(impl_graphsearcher->solver.getPath());
+                impl_graphsearcher->solver.resetUsedGrids();
             }
             /// apf update cmd_vel
-            impl_apfsolver->update();
+            impl_apfsolver->update(CurrPos,CurrRPY);
             /// when exit, switch to Activate
             if(impl_apfsolver->reachFlag)
             {
+                RCLCPP_INFO(this->get_logger(),"Current state: Shift; done");
                 curState = Activate;
             }
         }
