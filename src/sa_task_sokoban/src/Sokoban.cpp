@@ -215,10 +215,16 @@ public:
         Vector3d boxCurPos(curState.position.x,curState.position.y,curState.position.z);
         Vector3d boxTarPos(tarState.position.x,tarState.position.y,tarState.position.z);
 
-        pTool->solver.graphSearch(boxCurPos,boxTarPos);
+        double res = pTool->solver.graphSearch(boxCurPos,boxTarPos);
         goalPosList = pTool->solver.getPath();
         pTool->solver.resetUsedGrids();
 
+        if(res < 0)
+        {
+            RCLCPP_INFO(rclcpp::get_logger("lll"),"lll");
+            return;
+        }
+        
         for(int i = 0; i < goalPosList.size()-1; i++)
         {
             int j = i+1;
@@ -268,7 +274,7 @@ Sokoban::Sokoban()
     pub_model_ignore = this->create_publisher<simbridge::msg::ModelIgnore>("/model_ignore",1);
 
     sub_model_state = this->create_subscription<simbridge::msg::ModelState>(
-        "/model_state",1,std::bind(&taskExecutorPrivate::updateModelCallback,impl_taskexecutor,std::placeholders::_1)
+        "/model_states",1,std::bind(&taskExecutorPrivate::updateModelCallback,impl_taskexecutor,std::placeholders::_1)
     );
     sub_task = this->create_subscription<simbridge::msg::ModelState>(
         "/task",1,std::bind(&taskExecutorPrivate::updateTaskCallback,impl_taskexecutor,std::placeholders::_1)
