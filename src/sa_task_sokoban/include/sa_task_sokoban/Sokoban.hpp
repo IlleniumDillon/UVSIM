@@ -3,6 +3,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "simbridge/msg/model_state.hpp"
 #include "simbridge/msg/model_ignore.hpp"
+#include "simbridge/srv/query_map.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 #include "tf2/exceptions.h"
 #include "tf2_ros/transform_listener.h"
@@ -13,6 +14,8 @@
 #include "std_msgs/msg/float64.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
+
+#include "opencv2/opencv.hpp"
 
 using namespace std::chrono_literals;
 
@@ -43,12 +46,14 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel;
     rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr pub_arm_arm_joint;
     rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr pub_arm_hand_joint;
-    rclcpp::Publisher<simbridge::msg::ModelIgnore>::SharedPtr pub_model_ignore;
+    //rclcpp::Publisher<simbridge::msg::ModelIgnore>::SharedPtr pub_model_ignore;
 
     rclcpp::Subscription<simbridge::msg::ModelState>::SharedPtr sub_model_state;
     rclcpp::Subscription<simbridge::msg::ModelState>::SharedPtr sub_task;
-    rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr sub_map_dilate;
+    //rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr sub_map_dilate;
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr sub_scan;
+
+    //rclcpp::Client<simbridge::srv::QueryMap>::SharedPtr cli_map;
 
     std::shared_ptr<graphSearchPrivate> impl_graphsearcher;
     std::shared_ptr<APFSolverPrivate> impl_apfsolver;

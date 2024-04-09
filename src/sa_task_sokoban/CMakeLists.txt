@@ -24,8 +24,10 @@ find_package(trajectory_msgs REQUIRED)
 find_package(simbridge REQUIRED)
 find_package(simplanner REQUIRED)
 find_package(simallocator REQUIRED)
+find_package(OpenCV REQUIRED)
 
 
+include_directories(${OpenCV_INCLUDE_DIRS}) 
 include_directories(include/sa_task_sokoban)
 
 file(GLOB SOURCEFILE src/*.cpp)
@@ -43,6 +45,7 @@ ament_target_dependencies(
   "simplanner"
   "simallocator"
   "sensor_msgs"
+  "OpenCV"
 )
 
 install(TARGETS

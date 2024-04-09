@@ -3,11 +3,7 @@
 class graphSearchPrivate
 {
 public:
-    void updateMapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
-    {
-        map_dilate = *msg;
-    }
-    void updateMap()
+    void updateMap(nav_msgs::msg::OccupancyGrid map_dilate)
     {
         solver.deleteGridMap();
         Vector3d ol(map_dilate.info.origin.position.x,
@@ -33,7 +29,7 @@ public:
         }
     }
     gridPathFinder solver;
-    nav_msgs::msg::OccupancyGrid map_dilate;
+    //nav_msgs::msg::OccupancyGrid map_dilate;
 };
 class APFSolverPrivate
 {
@@ -53,6 +49,7 @@ public:
         double yawerr = curRPY.z() - goalRPY.z();
         if(err.norm() > 0.1)
         {
+            RCLCPP_INFO(rclcpp::get_logger("update"),"moving, err:%f",(float)err.norm());
             reachFlag = false;
             Vector3d Ftal(0,0,0);
             for(int i = 0; i < laserData.ranges.size(); i++)
@@ -81,9 +78,15 @@ public:
 
             int forward = minIndx+10;
             forward = forward<path.size()?forward:path.size()-1;
+            int numOfPoint = forward - minIndx;
+            numOfPoint = numOfPoint==0?1:numOfPoint;
             for(int indx = minIndx; indx < forward; indx++)
             {
-                Ftal += gravitation(path.at(indx),curPos,3);
+                Ftal += gravitation(path.at(indx),curPos,3) * 10 / numOfPoint;
+            }
+            if(minIndx == path.size()-1)
+            {
+                Ftal += gravitation(path.at(minIndx),curPos,3) * 2;
             }
             // if(path.size()>0)
             // Ftal += gravitation(path.at(forward),curPos,3);
@@ -96,6 +99,8 @@ public:
             if(fy > 1) fy = 0.3;
             if(fy < -1) fy = -0.3;
 
+            RCLCPP_INFO(rclcpp::get_logger("update"),"moving, force:[%f,%f]",fx,fy);
+
             cmd_vel.linear.x = fx;
             cmd_vel.linear.y = 0;
             cmd_vel.linear.z = 0;
@@ -103,8 +108,9 @@ public:
             cmd_vel.angular.y = 0;
             cmd_vel.angular.z = fy;
         }
-        else if(abs(yawerr) > 0.1)
+        else if(abs(yawerr) > 0.05)
         {
+            RCLCPP_INFO(rclcpp::get_logger("update"),"rotate, err:%f",yawerr);
             reachFlag = false;
             if(yawerr > 0)
             {
@@ -113,7 +119,7 @@ public:
                 cmd_vel.linear.z = 0;
                 cmd_vel.angular.x = 0;
                 cmd_vel.angular.y = 0;
-                cmd_vel.angular.z = -0.1;
+                cmd_vel.angular.z = -yawerr;
             }
             else
             {
@@ -122,7 +128,7 @@ public:
                 cmd_vel.linear.z = 0;
                 cmd_vel.angular.x = 0;
                 cmd_vel.angular.y = 0;
-                cmd_vel.angular.z = 0.1;
+                cmd_vel.angular.z = yawerr;
             }
         }
         else
@@ -171,6 +177,21 @@ public:
 class taskExecutorPrivate
 {
 public:
+    taskExecutorPrivate(double width, double hight, double wallthickness, double ori_x, double ori_y, double res = 0.05)
+    {
+        resolution = res;
+
+        int edgeThickness = wallthickness / res;
+        int mapWidth = width / res - edgeThickness;
+        int mapHight = hight / res - edgeThickness;
+
+        cv::Mat temp = cv::Mat(mapWidth,mapHight,CV_8UC1,cv::Scalar(0));
+        cv::copyMakeBorder(temp,MapBlank,edgeThickness,edgeThickness,edgeThickness,edgeThickness,cv::BORDER_CONSTANT,255);
+
+        origin_x = - hight / 2 + ori_x;
+        origin_y = - width / 2 + ori_y;
+        origin_z = 0;
+    }
     void updateModelCallback(const simbridge::msg::ModelState::SharedPtr msg)
     {
         model_state = *msg;
@@ -238,8 +259,71 @@ public:
             goalPosList.at(i).y() -= length_m*sin(yaw);
         }
     }
+    nav_msgs::msg::OccupancyGrid generateMap(bool ignoreFlag = false)
+    {
+        auto ignoreNames = ignore.model_names;
+
+        cv::Mat MapFull = MapBlank.clone();
+        int objectNum = model_state.model_names.size();
+        std::vector<std::vector<cv::Point>>objVertexs;
+
+        for(int i = 0; i < objectNum; i++)
+        {
+            if(ignoreFlag && ignoreNames.end()!=std::find(ignoreNames.begin(),ignoreNames.end(),model_state.model_names.at(i))) continue;
+            std::string substr = model_state.model_names.at(i).substr(0,3);
+            if(substr == "obs")
+            {
+                std::vector<cv::Point> objVertex;
+                geometry_msgs::msg::Quaternion q = model_state.model_poses.at(i).orientation;
+                tf2::Quaternion quat;
+                tf2::convert(q, quat);
+                tf2::Matrix3x3 m(quat);
+                double r,p,y;
+                m.getRPY(r,p,y);
+                double ang[4] = {CV_PI/4,CV_PI/4*3,-CV_PI/4*3,-CV_PI/4};
+                double rl = sqrt(2)*0.25;
+                for(int j = 0; j < 4; j++)
+                {
+                    cv::Point temp;
+                    temp.x = (rl*cos(ang[j]+y) + model_state.model_poses.at(i).position.x - origin_x) / resolution;
+                    temp.y = (rl*sin(ang[j]+y) + model_state.model_poses.at(i).position.y - origin_y) / resolution;
+                    objVertex.push_back(temp);
+                }
+                objVertexs.push_back(objVertex);
+            }
+        }
+
+        cv::fillPoly(MapFull,objVertexs,cv::Scalar(255));
+        cv::Mat MapDilate;
+        cv::dilate(MapFull,MapDilate,cv::getStructuringElement(cv::MorphShapes::MORPH_RECT,cv::Size(10,10)));
+
+        nav_msgs::msg::OccupancyGrid map_dil;
+        map_dil.header.frame_id="map_dil";
+        map_dil.info.height = MapBlank.rows;
+        map_dil.info.width = MapBlank.cols;
+        map_dil.info.resolution = resolution;
+        map_dil.info.origin.position.x = origin_x;
+        map_dil.info.origin.position.y = origin_y;
+        map_dil.info.origin.position.z = origin_z;
+        
+        for(int row = 0; row < MapBlank.rows; row++)
+        {
+            for(int col = 0; col < MapBlank.cols; col++)
+            {
+                map_dil.data.push_back(MapDilate.at<uchar>(row,col) / 255 * 100);
+            }
+        }
+
+        return map_dil;
+    }
+
     simbridge::msg::ModelState model_state;
     simbridge::msg::ModelState taskList;
+
+    cv::Mat MapBlank;
+    double resolution = 0.05;
+    double origin_x,origin_y,origin_z;
+
     std::vector<Vector3d> goalPosList;
     std::vector<Vector3d> goalRPYList;
     int curTaskIndx = -1;
@@ -256,7 +340,7 @@ Sokoban::Sokoban()
     impl_graphsearcher(std::make_shared<graphSearchPrivate>()),
     impl_apfsolver(std::make_shared<APFSolverPrivate>()),
     impl_hungarian(std::make_shared<hungarianPrivate>()),
-    impl_taskexecutor(std::make_shared<taskExecutorPrivate>())
+    impl_taskexecutor(std::make_shared<taskExecutorPrivate>(8.7,11.7,0.15,-0.3,0,0.05))
 {
     this->declare_parameter("robot_name", "robot0");
     this->declare_parameter("arm_name", "arm");
@@ -271,7 +355,7 @@ Sokoban::Sokoban()
     pub_cmd_vel = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel",1);
     pub_arm_arm_joint = this->create_publisher<std_msgs::msg::Float64>(armName+"_arm",1);
     pub_arm_hand_joint = this->create_publisher<std_msgs::msg::Float64>(armName+"_hand",1);
-    pub_model_ignore = this->create_publisher<simbridge::msg::ModelIgnore>("/model_ignore",1);
+    //pub_model_ignore = this->create_publisher<simbridge::msg::ModelIgnore>("/model_ignore",1);
 
     sub_model_state = this->create_subscription<simbridge::msg::ModelState>(
         "/model_states",1,std::bind(&taskExecutorPrivate::updateModelCallback,impl_taskexecutor,std::placeholders::_1)
@@ -279,9 +363,9 @@ Sokoban::Sokoban()
     sub_task = this->create_subscription<simbridge::msg::ModelState>(
         "/task",1,std::bind(&taskExecutorPrivate::updateTaskCallback,impl_taskexecutor,std::placeholders::_1)
     );
-    sub_map_dilate = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
-        "/map_dil",1,std::bind(&graphSearchPrivate::updateMapCallback,impl_graphsearcher,std::placeholders::_1)
-    );
+    // sub_map_dilate = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
+    //     "/map_dil",1,std::bind(&graphSearchPrivate::updateMapCallback,impl_graphsearcher,std::placeholders::_1)
+    // );
     sub_scan = this->create_subscription<sensor_msgs::msg::LaserScan>(
         "scan",1,std::bind(&APFSolverPrivate::updateScanCallback,impl_apfsolver,std::placeholders::_1)
     );
@@ -359,29 +443,31 @@ void Sokoban::timerCallback()
     }
     case Shift:
     {
-        static bool updateMap = false;
+        static bool queryMapInProgress = false;
         if(lastState == Idle)
         {
-            updateMap = true;
+            RCLCPP_INFO(this->get_logger(),"Current state: Shift; update map");
+            impl_graphsearcher->updateMap(impl_taskexecutor->generateMap(true));
+            /// get goal
+            impl_taskexecutor->generateGoal(impl_graphsearcher);
+            Vector3d goalPos = impl_taskexecutor->goalPosList.front();
+            Vector3d goalRPY = impl_taskexecutor->goalRPYList.front();
+
+            for(int i = 0; i < impl_taskexecutor->goalPosList.size(); i++)
+            {
+                RCLCPP_INFO(this->get_logger(),"[%f,%f]",impl_taskexecutor->goalPosList.at(i).x(),impl_taskexecutor->goalPosList.at(i).y());
+            }
+
+            /// get path
+            impl_graphsearcher->updateMap(impl_taskexecutor->generateMap(false));
+            impl_graphsearcher->solver.graphSearch(CurrPos,goalPos);
+            /// set path to apf
+            impl_apfsolver->setGoalRPY(goalRPY);
+            impl_apfsolver->setPath(impl_graphsearcher->solver.getPath());
+            impl_graphsearcher->solver.resetUsedGrids();
         }
         else
         {
-            if(updateMap == true)
-            {
-                RCLCPP_INFO(this->get_logger(),"Current state: Shift; update map");
-                updateMap = false;
-                impl_graphsearcher->updateMap();
-                /// get goal
-                impl_taskexecutor->generateGoal(impl_graphsearcher);
-                Vector3d goalPos = impl_taskexecutor->goalPosList.front();
-                Vector3d goalRPY = impl_taskexecutor->goalRPYList.front();
-                /// get path
-                impl_graphsearcher->solver.graphSearch(CurrPos,goalPos);
-                /// set path to apf
-                impl_apfsolver->setGoalRPY(goalRPY);
-                impl_apfsolver->setPath(impl_graphsearcher->solver.getPath());
-                impl_graphsearcher->solver.resetUsedGrids();
-            }
             /// apf update cmd_vel
             impl_apfsolver->update(CurrPos,CurrRPY);
             /// when exit, switch to Activate
@@ -448,7 +534,7 @@ void Sokoban::timerCallback()
         break;
     }
     }
-    pub_model_ignore->publish(impl_taskexecutor->ignore);
+    //pub_model_ignore->publish(impl_taskexecutor->ignore);
     pub_arm_arm_joint->publish(impl_taskexecutor->arm_arm);
     pub_arm_hand_joint->publish(impl_taskexecutor->arm_hand);
     pub_cmd_vel->publish(impl_apfsolver->cmd_vel);
