@@ -4753,5 +4753,6 @@
     <plugin name="model_state" filename="libgazebo_ros_modelstate.so">
       <update_rate>10</update_rate>
     </plugin>
+    <plugin name="add_joint" filename="libgazebo_ros_addjoint.so" />
   </world>
 </sdf>

@@ -77,6 +77,29 @@ install(TARGETS
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
 
+add_library(gazebo_ros_addjoint SHARED
+  src/gazebo_ros_addjoint.cpp
+)
+target_include_directories(gazebo_ros_addjoint PUBLIC include)
+ament_target_dependencies(gazebo_ros_addjoint
+  "gazebo_dev"
+  "gazebo_ros"
+  "rclcpp"
+  "trajectory_msgs"
+  "simbridge"
+)
+ament_export_libraries(gazebo_ros_addjoint)
+if(ENABLE_PROFILER)
+  target_include_directories(gazebo_ros_addjoint PUBLIC ${ignition-common3_INCLUDE_DIRS})
+  target_link_libraries(gazebo_ros_addjoint ${ignition-common3_LIBRARIES})
+endif()
+
+install(TARGETS
+  gazebo_ros_addjoint
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
 install(DIRECTORY include/
   DESTINATION include)
 

@@ -34,6 +34,7 @@ include_directories(include/simbridge)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/AddJoint.msg"
   "msg/ModelState.msg"
   "msg/ModelIgnore.msg"
   "srv/QueryMap.srv"
