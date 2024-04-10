@@ -54,23 +54,34 @@ void GazeboRosAddJointPrivate::addJointCallback(const simbridge::msg::AddJoint::
     if(model1 == NULL)
     {
         RCLCPP_ERROR(ros_node_->get_logger(),"no model named: %s", msg->model1.c_str());
+        return;
     }
-    gazebo::physics::Link_V linkList1 = model1->GetLinks();
-    for(int i = 0; i < linkList1.size(); i++)
+    gazebo::physics::LinkPtr link1 = model1->GetLink(msg->link1);
+    if(link1 == NULL)
     {
-        RCLCPP_INFO(ros_node_->get_logger(),"link named: %s", linkList1.at(i)->GetName().c_str());
+        RCLCPP_ERROR(ros_node_->get_logger(),"no model named: %s", msg->link1.c_str());
+        return;
     }
     gazebo::physics::ModelPtr model2 = world_->ModelByName(msg->model2);
     if(model2 == NULL)
     {
         RCLCPP_ERROR(ros_node_->get_logger(),"no model named: %s", msg->model2.c_str());
+        return;
     }
-    gazebo::physics::Link_V linkList2 = model2->GetLinks();
-    for(int i = 0; i < linkList2.size(); i++)
+    gazebo::physics::LinkPtr link2 = model2->GetLink(msg->link2);
+    if(link2 == NULL)
     {
-        RCLCPP_INFO(ros_node_->get_logger(),"link named: %s", linkList2.at(i)->GetName().c_str());
+        RCLCPP_ERROR(ros_node_->get_logger(),"no model named: %s", msg->link2.c_str());
+        return;
     }
-    model1->CreateJoint("temp","fixed",model2->GetLink("robot0_arm_hand_link"),model1->GetLink("link_0"));
+    if(msg->joint_state)
+    {
+        model1->CreateJoint(msg->link1 + msg->link2 + "_joint","fixed",link2,link1);
+    }
+    else
+    {
+        model1->RemoveJoint(msg->link1 + msg->link2 + "_joint");
+    }
 }
 
 GZ_REGISTER_WORLD_PLUGIN(GazeboRosAddJoint)
