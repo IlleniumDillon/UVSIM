@@ -3,6 +3,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "simbridge/msg/model_state.hpp"
 #include "simbridge/msg/model_ignore.hpp"
+#include "simbridge/msg/add_joint.hpp"
 #include "simbridge/srv/query_map.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 #include "tf2/exceptions.h"
@@ -47,6 +48,7 @@ private:
     rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr pub_arm_arm_joint;
     rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr pub_arm_hand_joint;
     //rclcpp::Publisher<simbridge::msg::ModelIgnore>::SharedPtr pub_model_ignore;
+    rclcpp::Publisher<simbridge::msg::AddJoint>::SharedPtr pub_addjoint;
 
     rclcpp::Subscription<simbridge::msg::ModelState>::SharedPtr sub_model_state;
     rclcpp::Subscription<simbridge::msg::ModelState>::SharedPtr sub_task;

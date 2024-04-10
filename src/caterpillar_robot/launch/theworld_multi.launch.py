@@ -145,24 +145,24 @@ def generate_launch_description():
                 arguments=[os.path.join(pkg_share, 'urdf/'+robot['name']+'.urdf')]
             )
         )
-        ld.add_action(
-            Node(
-                package='simplanner',
-                executable='uvplanner_node',
-                namespace='/'+robot['name'],
-                parameters=[
-                    {"robot_name": robot['name']},
-                    {"map_file": mapfile}
-                ]
-            )
-        )
-    start_rviz_cmd = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', rviz_config_path]
-        )
-    ld.add_action(start_rviz_cmd)
+        # ld.add_action(
+        #     Node(
+        #         package='simplanner',
+        #         executable='uvplanner_node',
+        #         namespace='/'+robot['name'],
+        #         parameters=[
+        #             {"robot_name": robot['name']},
+        #             {"map_file": mapfile}
+        #         ]
+        #     )
+        # )
+    # start_rviz_cmd = Node(
+    #     package='rviz2',
+    #     executable='rviz2',
+    #     name='rviz2',
+    #     output='screen',
+    #     arguments=['-d', rviz_config_path]
+    #     )
+    # ld.add_action(start_rviz_cmd)
 
     return ld

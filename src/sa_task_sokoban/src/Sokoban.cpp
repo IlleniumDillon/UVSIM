@@ -37,6 +37,7 @@ public:
     void setPath(std::vector<Vector3d> p)
     {
         path = p;
+        updateFlag = 0;
     }
     void setGoalRPY(Vector3d rpy)
     {
@@ -47,100 +48,93 @@ public:
         Vector3d err3d = curPos - path.back();
         Vector2d err(err3d.x(),err3d.y());
         double yawerr = curRPY.z() - goalRPY.z();
-        if(err.norm() > 0.1)
+
+        Vector3d Ftal(0,0,0);
+        for(int i = 0; i < laserData.ranges.size(); i++)
         {
-            RCLCPP_INFO(rclcpp::get_logger("update"),"moving, err:%f",(float)err.norm());
-            reachFlag = false;
-            Vector3d Ftal(0,0,0);
-            for(int i = 0; i < laserData.ranges.size(); i++)
-            {
-                double rotate = curRPY(2) + laserData.angle_min + i*laserData.angle_increment;
-                Vector3d obs(
-                    curPos(0) + cos(rotate)*laserData.ranges.at(i),
-                    curPos(1) + sin(rotate)*laserData.ranges.at(i),
-                    curPos(2)
-                );
-                Ftal += repulsion(obs,curPos,laserData.ranges.at(i),2,0.25);
-            }
-
-            double minDis = std::numeric_limits<double>::max();
-            int minIndx = -1;
-            for(int indx = 0; indx < path.size(); indx++)
-            {
-                Vector3d P0 = path.at(indx) - curPos;
-                double dis = P0.norm();
-                if(dis < minDis) 
-                {
-                    minDis = dis;
-                    minIndx = indx;
-                }
-            }
-
-            int forward = minIndx+10;
-            forward = forward<path.size()?forward:path.size()-1;
-            int numOfPoint = forward - minIndx;
-            numOfPoint = numOfPoint==0?1:numOfPoint;
-            for(int indx = minIndx; indx < forward; indx++)
-            {
-                Ftal += gravitation(path.at(indx),curPos,3) * 10 / numOfPoint;
-            }
-            if(minIndx == path.size()-1)
-            {
-                Ftal += gravitation(path.at(minIndx),curPos,3) * 2;
-            }
-            // if(path.size()>0)
-            // Ftal += gravitation(path.at(forward),curPos,3);
-            Matrix3d rotation_matrix(AngleAxisd(-curRPY(2),Vector3d::UnitZ()));
-            Ftal=rotation_matrix*Ftal;
-            
-            double fx = Ftal(0),fy = Ftal(1);
-            if(fx > 1) fx = 0.3;
-            if(fx < -1) fx = -0.3;
-            if(fy > 1) fy = 0.3;
-            if(fy < -1) fy = -0.3;
-
-            RCLCPP_INFO(rclcpp::get_logger("update"),"moving, force:[%f,%f]",fx,fy);
-
-            cmd_vel.linear.x = fx;
-            cmd_vel.linear.y = 0;
-            cmd_vel.linear.z = 0;
-            cmd_vel.angular.x = 0;
-            cmd_vel.angular.y = 0;
-            cmd_vel.angular.z = fy;
+            double rotate = curRPY(2) + laserData.angle_min + i*laserData.angle_increment;
+            Vector3d obs(
+                curPos(0) + cos(rotate)*laserData.ranges.at(i),
+                curPos(1) + sin(rotate)*laserData.ranges.at(i),
+                curPos(2)
+            );
+            Ftal += repulsion(obs,curPos,laserData.ranges.at(i),2,0.25);
         }
-        else if(abs(yawerr) > 0.05)
+
+        double minDis = std::numeric_limits<double>::max();
+        int minIndx = -1;
+        for(int indx = 0; indx < path.size(); indx++)
         {
-            RCLCPP_INFO(rclcpp::get_logger("update"),"rotate, err:%f",yawerr);
-            reachFlag = false;
-            if(yawerr > 0)
+            Vector3d P0 = path.at(indx) - curPos;
+            double dis = P0.norm();
+            if(dis < minDis) 
             {
-                cmd_vel.linear.x = 0;
-                cmd_vel.linear.y = 0;
-                cmd_vel.linear.z = 0;
-                cmd_vel.angular.x = 0;
-                cmd_vel.angular.y = 0;
-                cmd_vel.angular.z = -yawerr;
+                minDis = dis;
+                minIndx = indx;
+            }
+        }
+
+        int forward = minIndx+10;
+        forward = forward<path.size()?forward:path.size()-1;
+        int numOfPoint = forward - minIndx;
+        double fx,fy;
+
+        if(updateFlag == 0)
+        {
+            reachFlag = false;
+            if(err.norm() < 0.1) updateFlag++;
+            if(numOfPoint == 10)
+            {
+                for(int indx = minIndx; indx < forward; indx++)
+                {
+                    Ftal += gravitation(path.at(indx),curPos,3);
+                }
+                Matrix3d rotation_matrix(AngleAxisd(-curRPY(2),Vector3d::UnitZ()));
+                Ftal=rotation_matrix*Ftal;
+                
+                fx = Ftal(0),fy = Ftal(1);
             }
             else
             {
-                cmd_vel.linear.x = 0;
-                cmd_vel.linear.y = 0;
-                cmd_vel.linear.z = 0;
-                cmd_vel.angular.x = 0;
-                cmd_vel.angular.y = 0;
-                cmd_vel.angular.z = yawerr;
+                Ftal += gravitation(path.back(),curPos,3);
+                Matrix3d rotation_matrix(AngleAxisd(-curRPY(2),Vector3d::UnitZ()));
+                Ftal=rotation_matrix*Ftal;
+                
+                fx = Ftal(0),fy = Ftal(1);
+                if(abs(fy) > 0.05)
+                {
+                    fx = 0;
+                }
             }
+        }
+        else if(updateFlag == 1)
+        {
+            reachFlag = false;
+            if(abs(yawerr) < 0.05) updateFlag++;
+            fy = -yawerr * 10;
+            if(fy > 0.3) fy = 0.3;
+            if(fy < -0.3) fy = -0.3;
+            fx = 0;
         }
         else
         {
-            cmd_vel.linear.x = 0;
-            cmd_vel.linear.y = 0;
-            cmd_vel.linear.z = 0;
-            cmd_vel.angular.x = 0;
-            cmd_vel.angular.y = 0;
-            cmd_vel.angular.z = 0;
+            fx = 0;
+            fy = 0;
+            updateFlag = 0;
             reachFlag = true;
         }
+
+        if(fx > 0.3) fx = 0.3;
+        if(fx < -0.3) fx = -0.3;
+        if(fy > 0.3) fy = 0.3;
+        if(fy < -0.3) fy = -0.3;
+
+        cmd_vel.linear.x = fx;
+        cmd_vel.linear.y = 0;
+        cmd_vel.linear.z = 0;
+        cmd_vel.angular.x = 0;
+        cmd_vel.angular.y = 0;
+        cmd_vel.angular.z = fy;
     }
     void updateScanCallback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
     {
@@ -169,6 +163,7 @@ private:
         }
         return Frep;
     }
+    int updateFlag = 0;
 };
 class hungarianPrivate
 {
@@ -332,7 +327,7 @@ public:
     std_msgs::msg::Float64 arm_arm;
     std_msgs::msg::Float64 arm_hand;
 
-    double length_m = 0.6;
+    double length_m = 0.7;
 };
 
 Sokoban::Sokoban() 
@@ -356,6 +351,7 @@ Sokoban::Sokoban()
     pub_arm_arm_joint = this->create_publisher<std_msgs::msg::Float64>(armName+"_arm",1);
     pub_arm_hand_joint = this->create_publisher<std_msgs::msg::Float64>(armName+"_hand",1);
     //pub_model_ignore = this->create_publisher<simbridge::msg::ModelIgnore>("/model_ignore",1);
+    pub_addjoint = this->create_publisher<simbridge::msg::AddJoint>("/add_joint",1);
 
     sub_model_state = this->create_subscription<simbridge::msg::ModelState>(
         "/model_states",1,std::bind(&taskExecutorPrivate::updateModelCallback,impl_taskexecutor,std::placeholders::_1)
@@ -408,6 +404,8 @@ void Sokoban::timerCallback()
             if(impl_taskexecutor->curTaskIndx >= impl_taskexecutor->taskList.model_names.size())
             {
                 RCLCPP_INFO(this->get_logger(),"Current state: Idle; all task complete");
+                impl_taskexecutor->taskList.model_names.clear();
+                impl_taskexecutor->taskList.model_poses.clear();
                 impl_taskexecutor->curTaskIndx = -1;
                 curState = BeforeInit;
             }
@@ -453,11 +451,6 @@ void Sokoban::timerCallback()
             Vector3d goalPos = impl_taskexecutor->goalPosList.front();
             Vector3d goalRPY = impl_taskexecutor->goalRPYList.front();
 
-            for(int i = 0; i < impl_taskexecutor->goalPosList.size(); i++)
-            {
-                RCLCPP_INFO(this->get_logger(),"[%f,%f]",impl_taskexecutor->goalPosList.at(i).x(),impl_taskexecutor->goalPosList.at(i).y());
-            }
-
             /// get path
             impl_graphsearcher->updateMap(impl_taskexecutor->generateMap(false));
             impl_graphsearcher->solver.graphSearch(CurrPos,goalPos);
@@ -492,8 +485,15 @@ void Sokoban::timerCallback()
         else
         {
             activating ++;
-            if(activating > 15)
+            if(activating > 25)
             {
+                simbridge::msg::AddJoint addmsg;
+                addmsg.model1 = impl_taskexecutor->taskList.model_names.at(impl_taskexecutor->curTaskIndx);
+                addmsg.link1 = "link_0";
+                addmsg.model2 = robotName;
+                addmsg.link2 = robotName+"_"+armName+"_hand_link";
+                addmsg.joint_state = true;
+                pub_addjoint->publish(addmsg);
                 curState = ShiftWithBox;
                 RCLCPP_INFO(this->get_logger(),"Current state: Activate; Done");
             }
@@ -503,25 +503,48 @@ void Sokoban::timerCallback()
     }
     case ShiftWithBox:
     {
+        if(lastState == Activate)
+        {
+            impl_apfsolver->setGoalRPY(impl_taskexecutor->goalRPYList.back());
+            impl_apfsolver->setPath(impl_taskexecutor->goalPosList);
+        }
+        else
+        {
+            /// apf update cmd_vel
+            impl_apfsolver->update(CurrPos,CurrRPY);
+            /// when exit, switch to Activate
+            if(impl_apfsolver->reachFlag)
+            {
+                RCLCPP_INFO(this->get_logger(),"Current state: ShiftWithBox; done");
+                curState = Deactivate;
+            }
+        }
         lastState = ShiftWithBox;
         break;
     }
     case Deactivate:
     {
         static int deactivating = 0;
-        if(lastState != Activate)
+        if(lastState != Deactivate)
         {
             deactivating = 0;
+            simbridge::msg::AddJoint addmsg;
+            addmsg.model1 = impl_taskexecutor->taskList.model_names.at(impl_taskexecutor->curTaskIndx);
+            addmsg.link1 = "link_0";
+            addmsg.model2 = robotName;
+            addmsg.link2 = robotName+"_"+armName+"_hand_link";
+            addmsg.joint_state = false;
+            pub_addjoint->publish(addmsg);
             impl_taskexecutor->deactivateArm();
-            RCLCPP_INFO(this->get_logger(),"Current state: Activate; activating");
+            RCLCPP_INFO(this->get_logger(),"Current state: Deactivate; deactivating");
         }
         else
         {
             deactivating ++;
-            if(deactivating > 15)
+            if(deactivating > 25)
             {
                 curState = Idle;
-                RCLCPP_INFO(this->get_logger(),"Current state: Activate; Done");
+                RCLCPP_INFO(this->get_logger(),"Current state: Deactivate; Done");
             }
         }
         lastState = Deactivate;
