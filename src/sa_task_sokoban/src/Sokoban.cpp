@@ -243,6 +243,7 @@ public:
         
         for(int i = 0; i < goalPosList.size()-1; i++)
         {
+            RCLCPP_INFO(rclcpp::get_logger("goalList"),"%f,%f",goalPosList.at(i).x(),goalPosList.at(i).y());
             int j = i+1;
             double x1 = goalPosList.at(i).x();
             double y1 = goalPosList.at(i).y();
