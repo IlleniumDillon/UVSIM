@@ -448,6 +448,7 @@ void Sokoban::timerCallback()
             RCLCPP_INFO(this->get_logger(),"Current state: Shift; update map");
             impl_graphsearcher->updateMap(impl_taskexecutor->generateMap(true));
             /// get goal
+            ///TODO: generate goal from task list and map. the result is vector<vector>
             impl_taskexecutor->generateGoal(impl_graphsearcher);
             Vector3d goalPos = impl_taskexecutor->goalPosList.front();
             Vector3d goalRPY = impl_taskexecutor->goalRPYList.front();
