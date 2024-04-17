@@ -28,7 +28,7 @@ def gen_robot_list(number_of_robots):
         x_pos = i*0.5
         color = "Green"
         namespace = robot_name
-        robots.append({'name': robot_name, 'x_pose': x_pos, 'y_pose': 0.0, 'z_pose': 0.25,
+        robots.append({'name': robot_name, 'x_pose': -0.3, 'y_pose': 0.3, 'z_pose': 0.25,
                        'color': color, 'namespace': namespace})
 
 

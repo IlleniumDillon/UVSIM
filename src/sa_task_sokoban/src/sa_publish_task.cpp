@@ -8,8 +8,8 @@ public:
         pub = this->create_publisher<simbridge::msg::ModelState>("/task",1);
         simbridge::msg::ModelState msg;
         geometry_msgs::msg::Pose p;
-        p.position.x = 0;
-        p.position.y = 0;
+        p.position.x = -0.3;
+        p.position.y = -0.3;
         p.position.z = 0;
         std::string name = "obstacle44";
         msg.model_names.push_back(name);

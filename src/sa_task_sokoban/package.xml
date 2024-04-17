@@ -22,6 +22,7 @@
   <depend>simbridge</depend>
   <depend>simplanner</depend>
   <depend>simallocator</depend>
+  <depend>sokoban_solver</depend>
 
 
   <test_depend>ament_lint_auto</test_depend>

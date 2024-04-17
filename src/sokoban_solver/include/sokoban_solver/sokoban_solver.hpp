@@ -44,10 +44,10 @@ public:
     }
 };
 
-class Sokoban
+class SokobanSolver
 {
 public:
-    Sokoban() {}
+    SokobanSolver() {}
     void setWorld(World* world_)
     {
         world = world_;

@@ -14,11 +14,17 @@ using namespace std;
 class World
 {
 public:
+    World(){};
     World(int _width, int _height) : width(_width), height(_height)
     {
         map_blank = Mat(height, width, CV_8UC3, Scalar(255, 255, 255));
         map_move = Mat(height, width, CV_8UC1, Scalar(0));
         map_push = Mat(height, width, CV_8UC1, Scalar(0));
+    }
+    void setShowSize(int _width, int _height)
+    {
+        show_width = _width;
+        show_height = _height;
     }
 
     void addBox(Box box)

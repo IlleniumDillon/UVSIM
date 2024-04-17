@@ -25,10 +25,12 @@ find_package(simbridge REQUIRED)
 find_package(simplanner REQUIRED)
 find_package(simallocator REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(sokoban_solver REQUIRED)
 
 
 include_directories(${OpenCV_INCLUDE_DIRS}) 
 include_directories(include/sa_task_sokoban)
+include_directories(/home/dillon/UVSIM/install/sokoban_solver/include)
 
 file(GLOB SOURCEFILE src/*.cpp)
 
@@ -46,6 +48,7 @@ ament_target_dependencies(
   "simallocator"
   "sensor_msgs"
   "OpenCV"
+  "sokoban_solver"
 )
 
 install(TARGETS

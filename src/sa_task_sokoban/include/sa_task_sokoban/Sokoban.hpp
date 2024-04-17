@@ -16,13 +16,13 @@
 #include "geometry_msgs/msg/twist.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 
+#include "sokoban_solver.hpp"
+
 #include "opencv2/opencv.hpp"
 
 using namespace std::chrono_literals;
 
-class graphSearchPrivate;
 class APFSolverPrivate;
-class hungarianPrivate;
 class taskExecutorPrivate;
 
 class Sokoban : public rclcpp::Node
@@ -57,9 +57,7 @@ private:
 
     //rclcpp::Client<simbridge::srv::QueryMap>::SharedPtr cli_map;
 
-    std::shared_ptr<graphSearchPrivate> impl_graphsearcher;
     std::shared_ptr<APFSolverPrivate> impl_apfsolver;
-    std::shared_ptr<hungarianPrivate> impl_hungarian;
     std::shared_ptr<taskExecutorPrivate> impl_taskexecutor;
 
     ExecState curState = BeforeInit;

@@ -4,7 +4,7 @@
 
 #include "robot.hpp"
 #include "world.hpp"
-#include "sokoban.hpp"
+#include "sokoban_solver.hpp"
 
 using namespace Eigen;
 
@@ -43,10 +43,10 @@ int main()
         }
     }
 
-    Task task1(Vector2i(1, 1), "box36","");
-    Task task2(Vector2i(1, 12), "box89","");
-    Task task3(Vector2i(17, 1), "box81","");
-    Task task4(Vector2i(10, 7), "box39","");
+    Task task1(Vector2i(10, 7), "box36","");
+    // Task task2(Vector2i(1, 12), "box89","");
+    // Task task3(Vector2i(17, 1), "box81","");
+    // Task task4(Vector2i(10, 7), "box39","");
     Robot robot(Vector2i(10, 7), "robot0");
 
     World world(mapWidth, mapHeight);
@@ -59,18 +59,18 @@ int main()
     world.addRobot(robot);
 
     world.addTask(task1);
-    world.addTask(task2);
-    world.addTask(task3);
-    world.addTask(task4);
+    // world.addTask(task2);
+    // world.addTask(task3);
+    // world.addTask(task4);
 
-    Sokoban sokoban;
-    sokoban.setWorld(&world);
+    SokobanSolver sokobansolver;
+    sokobansolver.setWorld(&world);
 
     while(true)
     {
         world.update();
         world.draw();
-        sokoban.update();
+        sokobansolver.update();
 
         char input = cv::waitKey(0);
         if(input == 27)
