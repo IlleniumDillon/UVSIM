@@ -30,7 +30,6 @@ find_package(sokoban_solver REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS}) 
 include_directories(include/sa_task_sokoban)
-include_directories(/home/dillon/UVSIM/install/sokoban_solver/include)
 
 file(GLOB SOURCEFILE src/*.cpp)
 

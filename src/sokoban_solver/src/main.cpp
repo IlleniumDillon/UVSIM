@@ -43,7 +43,7 @@ int main()
         }
     }
 
-    Task task1(Vector2i(10, 7), "box36","");
+    Task task1(Vector2i(12, 7), "box50","");
     // Task task2(Vector2i(1, 12), "box89","");
     // Task task3(Vector2i(17, 1), "box81","");
     // Task task4(Vector2i(10, 7), "box39","");

@@ -24,8 +24,8 @@ install(TARGETS
   sokoban_test
   DESTINATION lib/${PROJECT_NAME})
 
-install(DIRECTORY include/sokoban_solver/
-  DESTINATION include)
+# install(DIRECTORY include/sokoban_solver/
+#   DESTINATION include)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

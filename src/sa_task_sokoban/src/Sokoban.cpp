@@ -17,6 +17,8 @@ public:
         Vector3d err3d = curPos - path.back();
         Vector2d err(err3d.x(),err3d.y());
         double yawerr = curRPY.z() - goalRPY.z();
+        if(yawerr > M_PI) yawerr -= 2*M_PI;
+        if(yawerr < -M_PI) yawerr += 2*M_PI;
 
         Vector3d Ftal(0,0,0);
         for(int i = 0; i < laserData.ranges.size(); i++)
@@ -80,6 +82,7 @@ public:
         {
             reachFlag = false;
             if(abs(yawerr) < 0.05) updateFlag++;
+            cout << yawerr << endl;
             fy = -yawerr * 10;
             if(fy > 0.3) fy = 0.3;
             if(fy < -0.3) fy = -0.3;
@@ -206,7 +209,41 @@ public:
     }
     void updateTaskCallback(const simbridge::msg::ModelState::SharedPtr msg)
     {
-        taskList = *msg;
+        RCLCPP_INFO(rclcpp::get_logger("task_exe"),"get task");
+        actionList.clear();
+        goalPosList.clear();
+        goalRPYList.clear();
+        pathList.clear();
+        taskNames.clear();
+
+        // taskList.model_names = msg->model_names;
+        // taskList.model_poses = msg->model_poses;
+        // taskList = *msg;
+        std::vector<string> model_names = {
+        "obstacle36", "obstacle43", "obstacle18", "obstacle05", "obstacle34", "obstacle16", "obstacle33", "obstacle17"
+        };
+        std::vector<Vector3d> model_poses = {
+            {0.9,0.3,0},
+            {0.3,0.9,0},
+            {0.3,-0.3,0},
+            {-0.3,0.9,0},
+            {-0.3,0.3,0},
+            {-0.3,-0.3,0},
+            {-0.9,0.9,0},
+            {-0.9,-0.3,0}
+        };
+        
+        for (int i = 0; i < 2; i++)
+        {
+            string name = model_names[i];
+            taskList.model_names.push_back(name);
+            geometry_msgs::msg::Pose pose;
+            pose.position.x = model_poses[i](0);
+            pose.position.y = model_poses[i](1);
+            pose.position.z = model_poses[i](2);
+            taskList.model_poses.push_back(pose);
+        }
+
         for (int i = 0; i < taskList.model_names.size(); i++)
         {
             Vector2i taskPos = Vector2i(
@@ -226,20 +263,34 @@ public:
             }
         }
         sokobansolver.setWorld(&world);
+        RCLCPP_INFO(rclcpp::get_logger("task_exe"),"start solve");
         auto robotActionList = sokobansolver.pathList;
 
         Robot::Action lastAction = Robot::Action::NOACTION;
-        vector<Vector2d> onePath;
-        Vector2d robotLastPos = 0.6 * Vector2d(
-            world.robots.at(0).position.x() + 0.5,
-            world.robots.at(0).position.y() + 0.5);
+        vector<Vector3d> onePath;
+        Vector3d robotLastPos = 0.6 * Vector3d(
+            world.robots.at(0).position.x(),
+            world.robots.at(0).position.y(),
+            0) + Vector3d(origin_x,origin_y,origin_z);
+        robotLastPos.y() = -robotLastPos.y();
+        cout << robotLastPos.x()<< " " << robotLastPos.y()<< endl;
+        //actionList.push_back(false);
         for (int i = 0; i < robotActionList.size(); i++)
         {
             auto robotAction = robotActionList.at(i).action;
             auto robotMove = robotActionList.at(i).move;
             auto robot = world.robots.at(0);
-            if (robotAction != lastAction)
+            if (robotAction != lastAction || i == robotActionList.size()-1)
             {
+                if(lastAction == Robot::Action::PUSH)
+                {
+                    actionList.push_back(true);
+                }
+                else
+                {
+                    actionList.push_back(false);
+                }
+                //pathList.push_back(onePath);
                 pathList.push_back(onePath);
                 onePath.clear();
                 //get rpy
@@ -252,11 +303,11 @@ public:
                 {
                     goalRPY = Vector3d(0,0,M_PI);
                 }
-                else if (robotMove.y() == 1)
+                else if (robotMove.y() == -1)
                 {
                     goalRPY = Vector3d(0,0,M_PI/2);
                 }
-                else if (robotMove.y() == -1)
+                else if (robotMove.y() == 1)
                 {
                     goalRPY = Vector3d(0,0,-M_PI/2);
                 }
@@ -264,13 +315,40 @@ public:
 
                 lastAction = robotAction;
                 cout << "action: " << robotAction << endl;
+                if (i == robotActionList.size()-1)
+                {
+                    break;
+                }
                 i--;
                 continue;
             }
-            robotLastPos += 0.6 * Vector2d(robotMove.x(), robotMove.y());
+            robotLastPos += 0.6 * Vector3d(robotMove.x(), -robotMove.y(), 0);
             onePath.push_back(robotLastPos);
-            cout << robotLastPos.x() + origin_x << " " << robotLastPos.y() + origin_y << endl;
         }
+
+        for (int i = 0; i < pathList.size(); i++)
+        {
+            vector<Vector3d> smoothPath;
+            for (int j = 1; j < pathList.at(i).size(); j++)
+            {
+                Vector3d p0 = pathList.at(i).at(j - 1);
+                Vector3d p1 = pathList.at(i).at(j);
+                Vector3d dir = p1 - p0;
+                double dis = dir.norm();
+                int num = round(dis / 0.05);
+                dir.normalize();
+                for (int k = 0; k < num; k++)
+                {
+                    smoothPath.push_back(p0 + dir * k * 0.05);
+                }
+            }
+            goalPosList.push_back(smoothPath);
+        }
+        cout << "goalPosList size: " << goalPosList.size() << endl;
+        cout << "actionList size: " << actionList.size() << endl;
+        cout << "goalRPYList size: " << goalRPYList.size() << endl;
+        curTaskIndx = 0;
+        curPathIndx = 0;
     }
     void activateArm()
     {
@@ -299,13 +377,13 @@ public:
     World world;
     SokobanSolver sokobansolver;
 
-    vector<vector<Vector2d>> pathList;
+    vector<vector<Vector3d>> pathList;
     vector<bool> actionList;
     vector<vector<Vector3d>> goalPosList;
     vector<Vector3d> goalRPYList;
+    vector<string> taskNames;
     int curTaskIndx = -1;
     int curPathIndx = -1;
-    int curPointIndx = -1;
 };
 
 Sokoban::Sokoban() 
@@ -342,24 +420,58 @@ Sokoban::Sokoban()
         "scan",1,std::bind(&APFSolverPrivate::updateScanCallback,impl_apfsolver,std::placeholders::_1)
     );
 
-    timer = this->create_wall_timer(1s,std::bind(&Sokoban::timerCallback,this));
+    timer = this->create_wall_timer(100ms,std::bind(&Sokoban::timerCallback,this));
 }
 
 void Sokoban::timerCallback()
 {
-    /*updatePose();
-    
+    static bool completeFlag = true;
+    static int waitCount = 0;
+    updatePose();
+    if (impl_taskexecutor->sokobansolver.pathList.empty() || impl_taskexecutor->curTaskIndx == -1 || impl_taskexecutor->curTaskIndx >= impl_taskexecutor->actionList.size())
+    {
+        impl_taskexecutor->curTaskIndx = -1;
+        impl_taskexecutor->deactivateArm();
+        impl_apfsolver->cmd_vel.linear.x = 0;
+        impl_apfsolver->cmd_vel.linear.y = 0;
+        impl_apfsolver->cmd_vel.linear.z = 0;
+        impl_apfsolver->cmd_vel.angular.x = 0;
+        impl_apfsolver->cmd_vel.angular.y = 0;
+        impl_apfsolver->cmd_vel.angular.z = 0;
+        return;
+    }
+    if (waitCount > 0)
+    {
+        waitCount--;
+        return;
+    }
+    if (completeFlag)
+    {
+        impl_apfsolver->setPath(impl_taskexecutor->goalPosList.at(impl_taskexecutor->curTaskIndx));
+        impl_apfsolver->setGoalRPY(impl_taskexecutor->goalRPYList.at(impl_taskexecutor->curTaskIndx));
+        completeFlag = false;
+        if(impl_taskexecutor->actionList.at(impl_taskexecutor->curTaskIndx))
+        {
+            impl_taskexecutor->activateArm();
+        }
+        else
+        {
+            impl_taskexecutor->deactivateArm();
+        }
+        //waitCount = 25;
+    }
+    else
+    {
+        impl_apfsolver->update(CurrPos,CurrRPY);
+        if(impl_apfsolver->reachFlag)
+        {
+            completeFlag = true;
+            impl_taskexecutor->curTaskIndx++;
+        }
+    }
     pub_arm_arm_joint->publish(impl_taskexecutor->arm_arm);
     pub_arm_hand_joint->publish(impl_taskexecutor->arm_hand);
-    pub_cmd_vel->publish(impl_apfsolver->cmd_vel);*/
-    if (!impl_taskexecutor->sokobansolver.pathList.empty())
-    {
-        impl_taskexecutor->world.draw();
-        impl_taskexecutor->sokobansolver.update();
-        impl_taskexecutor->world.update();
-        
-        cv::waitKey(1);
-    }
+    pub_cmd_vel->publish(impl_apfsolver->cmd_vel);
 }
 
 void Sokoban::updatePose()
