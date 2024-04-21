@@ -284,13 +284,27 @@ public:
             auto robot = world.robots.at(0);
             
             robotLastPos += 0.6 * Vector3d(robotMove.x(), robotMove.y(), 0);
+            if (robotAction == Robot::Action::PUSH)
+            {
+                geometry_msgs::msg::Point pose;
+                pose.x = robotLastPos.x() + robotMove.x() * 0.05;
+                pose.y = robotLastPos.y() + robotMove.y() * 0.05;
+                pose.z = robotLastPos.z();
+                task.task_points.push_back(pose);
+                task.action.push_back(robotAction);
+            }
+            else
+            {
+                geometry_msgs::msg::Point pose;
+                pose.x = robotLastPos.x();
+                pose.y = robotLastPos.y();
+                pose.z = robotLastPos.z();
+                task.task_points.push_back(pose);
+                task.action.push_back(robotAction);
+            }
+            
             //cout << robotMove.x()<< " " << robotMove.y()<< endl;
-            geometry_msgs::msg::Point pose;
-            pose.x = robotLastPos.x();
-            pose.y = robotLastPos.y();
-            pose.z = robotLastPos.z();
-            task.task_points.push_back(pose);
-            task.action.push_back(robotAction);
+            
             onePath.push_back(robotLastPos);
         }
         taskFlag = true;
