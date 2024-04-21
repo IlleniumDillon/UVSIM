@@ -261,4 +261,15 @@
         </plugin>
     </gazebo>
 
+    <gazebo>
+        <plugin name="${robot_name}_sokoban" filename="libgazebo_ros_sokoban.so">
+            <ros>
+                <namespace>/${robot_namespace}</namespace>
+                <!-- <remapping>set_servojoint:=tripod</remapping> -->
+            </ros>
+            <joint_arm>${robot_name}_arm_arm_joint</joint_arm>
+            <joint_hand>${robot_name}_arm_hand_joint</joint_hand>
+        </plugin>
+    </gazebo>
+
 </robot>

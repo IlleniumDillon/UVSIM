@@ -37,6 +37,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/AddJoint.msg"
   "msg/ModelState.msg"
   "msg/ModelIgnore.msg"
+  "msg/SokobanTask.msg"
   "srv/QueryMap.srv"
   DEPENDENCIES geometry_msgs nav_msgs# Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
 )

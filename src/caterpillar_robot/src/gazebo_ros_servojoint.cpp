@@ -31,6 +31,7 @@ public:
     gazebo::physics::LinkPtr reference_link_;
     gazebo::physics::JointPtr joint_;
     double cmd_;
+    double taeget_ = 0;
     double update_period_;
     gazebo::common::Time last_update_time_;
     gazebo::common::Time trajectory_start_time_;
@@ -79,6 +80,7 @@ void GazeboRosServoJoint::Load(gazebo::physics::ModelPtr model, sdf::ElementPtr 
         }
         impl_->joint_ = joint;
     }
+    impl_->joint_->SetPosition(0,0);
     
     impl_->last_update_time_ = impl_->world_->SimTime();
     impl_->sub_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float64>(
@@ -102,6 +104,7 @@ void GazeboRosServoJointPrivate::OnUpdate(const gazebo::common::UpdateInfo &info
         return;
     }
     last_update_time_ = current_time;
+    joint_->SetPosition(0,taeget_);
     if(!new_cmds_) return;
 #ifdef IGN_PROFILER_ENABLE
     IGN_PROFILE("GazeboRosServoJointPrivate::OnUpdate");
@@ -112,7 +115,8 @@ void GazeboRosServoJointPrivate::OnUpdate(const gazebo::common::UpdateInfo &info
     double err = cmd_ - cur;
     double maxAng = maxspeed * seconds_since_last_update;
     double delta = abs(err) > maxAng ? err/abs(err)*maxAng : err;
-    joint_->SetPosition(0,cur + delta);
+    taeget_ = cur + delta;
+    joint_->SetPosition(0,taeget_);
     new_cmds_ = false;
 
 #ifdef IGN_PROFILER_ENABLE

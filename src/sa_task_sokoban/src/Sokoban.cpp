@@ -154,8 +154,8 @@ public:
 
         // origin_x = - hight / 2 + ori_x;
         // origin_y = - width / 2 + ori_y;
-        origin_x = -0.6*10 - 0.3;
-        origin_y = -0.6*7 - 0.3;
+        origin_x = -0.6*10 + 0.3;
+        origin_y = -0.6*7 + 0.3;
         origin_z = 0;
 
         cout << "origin: " << origin_x << " " << origin_y << " " << origin_z << endl;
@@ -189,7 +189,7 @@ public:
                 {
                     Vector2i robotPos = Vector2i(
                         round((model_state.model_poses.at(i).position.x - origin_x) / 0.6),
-                        world.height - round((model_state.model_poses.at(i).position.y - origin_y) / 0.6) - 1
+                        round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)
                     );
                     cout << robotPos.x() << " " << robotPos.y() << endl;
                     world.addRobot(Robot(robotPos, model_state.model_names.at(i)));
@@ -198,7 +198,7 @@ public:
                 {
                     Vector2i boxPos = Vector2i(
                         round((model_state.model_poses.at(i).position.x - origin_x) / 0.6),
-                        world.height - round((model_state.model_poses.at(i).position.y - origin_y) / 0.6) - 1
+                        round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)
                     );
                     world.addBox(Box(boxPos, model_state.model_names.at(i), true));
                 }
@@ -215,6 +215,8 @@ public:
         goalRPYList.clear();
         pathList.clear();
         taskNames.clear();
+        task.action.clear();
+        task.task_points.clear();
 
         // taskList.model_names = msg->model_names;
         // taskList.model_poses = msg->model_poses;
@@ -233,7 +235,7 @@ public:
             {-0.9,-0.3,0}
         };
         
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < model_names.size(); i++)
         {
             string name = model_names[i];
             taskList.model_names.push_back(name);
@@ -247,9 +249,10 @@ public:
         for (int i = 0; i < taskList.model_names.size(); i++)
         {
             Vector2i taskPos = Vector2i(
-                round((model_state.model_poses.at(i).position.x - origin_x) / 0.6),
-                world.height - round((model_state.model_poses.at(i).position.y - origin_y) / 0.6) - 1
+                round((taskList.model_poses.at(i).position.x - origin_x) / 0.6),
+                round((taskList.model_poses.at(i).position.y - origin_y) / 0.6)
             );
+            //cout << model_state.model_poses.at(i).position.x - origin_x << " " << model_state.model_poses.at(i).position.y - origin_y << endl;
             cout << taskPos.x() << " " << taskPos.y() << endl;
             world.addTask(Task(taskPos, taskList.model_names.at(i),""));
 
@@ -272,7 +275,6 @@ public:
             world.robots.at(0).position.x(),
             world.robots.at(0).position.y(),
             0) + Vector3d(origin_x,origin_y,origin_z);
-        robotLastPos.y() = -robotLastPos.y();
         cout << robotLastPos.x()<< " " << robotLastPos.y()<< endl;
         //actionList.push_back(false);
         for (int i = 0; i < robotActionList.size(); i++)
@@ -280,75 +282,42 @@ public:
             auto robotAction = robotActionList.at(i).action;
             auto robotMove = robotActionList.at(i).move;
             auto robot = world.robots.at(0);
-            if (robotAction != lastAction || i == robotActionList.size()-1)
-            {
-                if(lastAction == Robot::Action::PUSH)
-                {
-                    actionList.push_back(true);
-                }
-                else
-                {
-                    actionList.push_back(false);
-                }
-                //pathList.push_back(onePath);
-                pathList.push_back(onePath);
-                onePath.clear();
-                //get rpy
-                Vector3d goalRPY;
-                if (robotMove.x() == 1)
-                {
-                    goalRPY = Vector3d(0,0,0);
-                }
-                else if (robotMove.x() == -1)
-                {
-                    goalRPY = Vector3d(0,0,M_PI);
-                }
-                else if (robotMove.y() == -1)
-                {
-                    goalRPY = Vector3d(0,0,M_PI/2);
-                }
-                else if (robotMove.y() == 1)
-                {
-                    goalRPY = Vector3d(0,0,-M_PI/2);
-                }
-                goalRPYList.push_back(goalRPY);
-
-                lastAction = robotAction;
-                cout << "action: " << robotAction << endl;
-                if (i == robotActionList.size()-1)
-                {
-                    break;
-                }
-                i--;
-                continue;
-            }
-            robotLastPos += 0.6 * Vector3d(robotMove.x(), -robotMove.y(), 0);
+            
+            robotLastPos += 0.6 * Vector3d(robotMove.x(), robotMove.y(), 0);
+            //cout << robotMove.x()<< " " << robotMove.y()<< endl;
+            geometry_msgs::msg::Point pose;
+            pose.x = robotLastPos.x();
+            pose.y = robotLastPos.y();
+            pose.z = robotLastPos.z();
+            task.task_points.push_back(pose);
+            task.action.push_back(robotAction);
             onePath.push_back(robotLastPos);
         }
+        taskFlag = true;
 
-        for (int i = 0; i < pathList.size(); i++)
-        {
-            vector<Vector3d> smoothPath;
-            for (int j = 1; j < pathList.at(i).size(); j++)
-            {
-                Vector3d p0 = pathList.at(i).at(j - 1);
-                Vector3d p1 = pathList.at(i).at(j);
-                Vector3d dir = p1 - p0;
-                double dis = dir.norm();
-                int num = round(dis / 0.05);
-                dir.normalize();
-                for (int k = 0; k < num; k++)
-                {
-                    smoothPath.push_back(p0 + dir * k * 0.05);
-                }
-            }
-            goalPosList.push_back(smoothPath);
-        }
-        cout << "goalPosList size: " << goalPosList.size() << endl;
-        cout << "actionList size: " << actionList.size() << endl;
-        cout << "goalRPYList size: " << goalRPYList.size() << endl;
-        curTaskIndx = 0;
-        curPathIndx = 0;
+        // for (int i = 0; i < pathList.size(); i++)
+        // {
+        //     vector<Vector3d> smoothPath;
+        //     for (int j = 1; j < pathList.at(i).size(); j++)
+        //     {
+        //         Vector3d p0 = pathList.at(i).at(j - 1);
+        //         Vector3d p1 = pathList.at(i).at(j);
+        //         Vector3d dir = p1 - p0;
+        //         double dis = dir.norm();
+        //         int num = round(dis / 0.05);
+        //         dir.normalize();
+        //         for (int k = 0; k < num; k++)
+        //         {
+        //             smoothPath.push_back(p0 + dir * k * 0.05);
+        //         }
+        //     }
+        //     goalPosList.push_back(smoothPath);
+        // }
+        // cout << "goalPosList size: " << goalPosList.size() << endl;
+        // cout << "actionList size: " << actionList.size() << endl;
+        // cout << "goalRPYList size: " << goalRPYList.size() << endl;
+        // curTaskIndx = 0;
+        // curPathIndx = 0;
     }
     void activateArm()
     {
@@ -384,6 +353,9 @@ public:
     vector<string> taskNames;
     int curTaskIndx = -1;
     int curPathIndx = -1;
+
+    simbridge::msg::SokobanTask task;
+    bool taskFlag = false;
 };
 
 Sokoban::Sokoban() 
@@ -406,6 +378,7 @@ Sokoban::Sokoban()
     pub_arm_hand_joint = this->create_publisher<std_msgs::msg::Float64>(armName+"_hand",1);
     //pub_model_ignore = this->create_publisher<simbridge::msg::ModelIgnore>("/model_ignore",1);
     pub_addjoint = this->create_publisher<simbridge::msg::AddJoint>("/add_joint",1);
+    pub_task = this->create_publisher<simbridge::msg::SokobanTask>("/robot0/sokoban_task",1);
 
     sub_model_state = this->create_subscription<simbridge::msg::ModelState>(
         "/model_states",1,std::bind(&taskExecutorPrivate::updateModelCallback,impl_taskexecutor,std::placeholders::_1)
@@ -425,53 +398,11 @@ Sokoban::Sokoban()
 
 void Sokoban::timerCallback()
 {
-    static bool completeFlag = true;
-    static int waitCount = 0;
-    updatePose();
-    if (impl_taskexecutor->sokobansolver.pathList.empty() || impl_taskexecutor->curTaskIndx == -1 || impl_taskexecutor->curTaskIndx >= impl_taskexecutor->actionList.size())
+    if(impl_taskexecutor->taskFlag)
     {
-        impl_taskexecutor->curTaskIndx = -1;
-        impl_taskexecutor->deactivateArm();
-        impl_apfsolver->cmd_vel.linear.x = 0;
-        impl_apfsolver->cmd_vel.linear.y = 0;
-        impl_apfsolver->cmd_vel.linear.z = 0;
-        impl_apfsolver->cmd_vel.angular.x = 0;
-        impl_apfsolver->cmd_vel.angular.y = 0;
-        impl_apfsolver->cmd_vel.angular.z = 0;
-        return;
+        impl_taskexecutor->taskFlag = false;
+        pub_task->publish(impl_taskexecutor->task);
     }
-    if (waitCount > 0)
-    {
-        waitCount--;
-        return;
-    }
-    if (completeFlag)
-    {
-        impl_apfsolver->setPath(impl_taskexecutor->goalPosList.at(impl_taskexecutor->curTaskIndx));
-        impl_apfsolver->setGoalRPY(impl_taskexecutor->goalRPYList.at(impl_taskexecutor->curTaskIndx));
-        completeFlag = false;
-        if(impl_taskexecutor->actionList.at(impl_taskexecutor->curTaskIndx))
-        {
-            impl_taskexecutor->activateArm();
-        }
-        else
-        {
-            impl_taskexecutor->deactivateArm();
-        }
-        //waitCount = 25;
-    }
-    else
-    {
-        impl_apfsolver->update(CurrPos,CurrRPY);
-        if(impl_apfsolver->reachFlag)
-        {
-            completeFlag = true;
-            impl_taskexecutor->curTaskIndx++;
-        }
-    }
-    pub_arm_arm_joint->publish(impl_taskexecutor->arm_arm);
-    pub_arm_hand_joint->publish(impl_taskexecutor->arm_hand);
-    pub_cmd_vel->publish(impl_apfsolver->cmd_vel);
 }
 
 void Sokoban::updatePose()

@@ -126,7 +126,7 @@
         <gazebo reference="${robot_name}_${arm_name}_function">
             <material>Gazebo/Gray</material>
         </gazebo>
-        <gazebo>
+        <!-- <gazebo>
             <plugin name="${robot_name}_${arm_name}_arm_trajectory" filename="libgazebo_ros_servojoint.so">
                 <ros>
                     <namespace>/${robot_namespace}</namespace>
@@ -145,6 +145,6 @@
                 <update_rate>10</update_rate>
                 <joints>${robot_name}_${arm_name}_hand_joint</joints>
             </plugin>
-        </gazebo>
+        </gazebo> -->
     </xacro:macro>
 </robot>
