@@ -166,46 +166,36 @@ public:
         RCLCPP_INFO(rclcpp::get_logger("task_exe"),"%d,%d,%d",mapWidth,mapHight,edgeThickness);
         world = World(sokomapWidth,sokomapHight);
         //world.setShowSize(600,800);
-        for (int i = 0; i < sokomapHight; i++) 
-        {
-            for (int j = 0; j < sokomapWidth; j++) 
-            {
-                if(i == 0 || i == sokomapHight-1 || j == 0 || j == sokomapWidth-1)
-                {
-                    world.addBox(Box(Vector2i(j, i), "wall" + std::to_string(world.boxes.size()), true));
-                }
-            }
-        }
     }
     void updateModelCallback(const simbridge::msg::ModelState::SharedPtr msg)
     {
-        static bool first = true;
+        //static bool first = true;
         model_state = *msg;
-        if (first)
-        {
-            for (int i = 0; i < model_state.model_names.size(); i++)
-            {
-                if (model_state.model_names.at(i).substr(0, 3) == "rob")
-                {
-                    Vector2i robotPos = Vector2i(
-                        round((model_state.model_poses.at(i).position.x - origin_x) / 0.6),
-                        round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)
-                    );
-                    cout << robotPos.x() << " " << robotPos.y() << endl;
-                    world.addRobot(Robot(robotPos, model_state.model_names.at(i)));
-                }
-                else if (model_state.model_names.at(i).substr(0, 3) == "obs")
-                {
-                    Vector2i boxPos = Vector2i(
-                        round((model_state.model_poses.at(i).position.x - origin_x) / 0.6),
-                        round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)
-                    );
-                    world.addBox(Box(boxPos, model_state.model_names.at(i), true));
-                }
-            }
+        // if (first)
+        // {
+        //     for (int i = 0; i < model_state.model_names.size(); i++)
+        //     {
+        //         if (model_state.model_names.at(i).substr(0, 3) == "rob")
+        //         {
+        //             Vector2i robotPos = Vector2i(
+        //                 round((model_state.model_poses.at(i).position.x - origin_x) / 0.6),
+        //                 round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)
+        //             );
+        //             cout << robotPos.x() << " " << robotPos.y() << endl;
+        //             world.addRobot(Robot(robotPos, model_state.model_names.at(i)));
+        //         }
+        //         else if (model_state.model_names.at(i).substr(0, 3) == "obs")
+        //         {
+        //             Vector2i boxPos = Vector2i(
+        //                 round((model_state.model_poses.at(i).position.x - origin_x) / 0.6),
+        //                 round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)
+        //             );
+        //             world.addBox(Box(boxPos, model_state.model_names.at(i), true));
+        //         }
+        //     }
 
-            first = false;
-        }
+        //     first = false;
+        // }
     }
     void updateTaskCallback(const simbridge::msg::ModelState::SharedPtr msg)
     {
@@ -218,39 +208,92 @@ public:
         task.action.clear();
         task.task_points.clear();
 
-        // taskList.model_names = msg->model_names;
-        // taskList.model_poses = msg->model_poses;
-        // taskList = *msg;
-        std::vector<string> model_names = {
-        "obstacle36", "obstacle43", "obstacle18", "obstacle05", "obstacle34", "obstacle16", "obstacle33", "obstacle17"
-        };
-        std::vector<Vector3d> model_poses = {
-            {0.9,0.3,0},
-            {0.3,0.9,0},
-            {0.3,-0.3,0},
-            {-0.3,0.9,0},
-            {-0.3,0.3,0},
-            {-0.3,-0.3,0},
-            {-0.9,0.9,0},
-            {-0.9,-0.3,0}
-        };
-        
-        for (int i = 0; i < model_names.size(); i++)
+        world.robots.clear();
+        world.boxes.clear();
+        world.taskList.clear();
+
+        for (int i = 0; i < world.height; i++) 
         {
-            string name = model_names[i];
-            taskList.model_names.push_back(name);
-            geometry_msgs::msg::Pose pose;
-            pose.position.x = model_poses[i](0);
-            pose.position.y = model_poses[i](1);
-            pose.position.z = model_poses[i](2);
-            taskList.model_poses.push_back(pose);
+            for (int j = 0; j < world.width; j++) 
+            {
+                if(i == 0 || i == world.height-1 || j == 0 || j == world.width-1)
+                {
+                    world.addBox(Box(Vector2i(j, i), "wall" + std::to_string(world.boxes.size()), true));
+                }
+            }
         }
+
+        for (int i = 0; i < model_state.model_names.size(); i++)
+        {
+            if (model_state.model_names.at(i).substr(0, 3) == "rob")
+            {
+                Vector2i robotPos = Vector2i(
+                    round((model_state.model_poses.at(i).position.x - origin_x) / 0.6)+1,
+                    round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)+1
+                );
+                cout << robotPos.x() << " " << robotPos.y() << endl;
+                world.addRobot(Robot(robotPos, model_state.model_names.at(i)));
+            }
+            else if (model_state.model_names.at(i).substr(0, 3) == "obs")
+            {
+                Vector2i boxPos = Vector2i(
+                    round((model_state.model_poses.at(i).position.x - origin_x) / 0.6)+1,
+                    round((model_state.model_poses.at(i).position.y - origin_y) / 0.6)+1
+                );
+                world.addBox(Box(boxPos, model_state.model_names.at(i), true));
+            }
+        }
+        
+        for (int i = 0; i < world.width; i++)
+        {
+            for (int j = 0; j < world.height; j++)
+            {
+                auto it = find_if(world.boxes.begin(), world.boxes.end(), [i, j](Box& box) {
+                    return box.position.x() == i && box.position.y() == j;
+                });
+                if (it == world.boxes.end())
+                {
+                    cout << 0 << " ";
+                }
+                else
+                {
+                    cout << 1 << " ";
+                }
+            }
+            cout << endl;
+        }
+
+        taskList = *msg;
+        // std::vector<string> model_names = {
+        // "obstacle36", "obstacle43", "obstacle18", "obstacle05", "obstacle34", "obstacle16", "obstacle33", "obstacle17"
+        // };
+        // std::vector<Vector3d> model_poses = {
+        //     {0.9,0.3,0},
+        //     {0.3,0.9,0},
+        //     {0.3,-0.3,0},
+        //     {-0.3,0.9,0},
+        //     {-0.3,0.3,0},
+        //     {-0.3,-0.3,0},
+        //     {-0.9,0.9,0},
+        //     {-0.9,-0.3,0}
+        // };
+        
+        // for (int i = 0; i < model_names.size(); i++)
+        // {
+        //     string name = model_names[i];
+        //     taskList.model_names.push_back(name);
+        //     geometry_msgs::msg::Pose pose;
+        //     pose.position.x = model_poses[i](0);
+        //     pose.position.y = model_poses[i](1);
+        //     pose.position.z = model_poses[i](2);
+        //     taskList.model_poses.push_back(pose);
+        // }
 
         for (int i = 0; i < taskList.model_names.size(); i++)
         {
             Vector2i taskPos = Vector2i(
-                round((taskList.model_poses.at(i).position.x - origin_x) / 0.6),
-                round((taskList.model_poses.at(i).position.y - origin_y) / 0.6)
+                round((taskList.model_poses.at(i).position.x - origin_x) / 0.6)+1,
+                round((taskList.model_poses.at(i).position.y - origin_y) / 0.6)+1
             );
             //cout << model_state.model_poses.at(i).position.x - origin_x << " " << model_state.model_poses.at(i).position.y - origin_y << endl;
             cout << taskPos.x() << " " << taskPos.y() << endl;
@@ -272,8 +315,8 @@ public:
         Robot::Action lastAction = Robot::Action::NOACTION;
         vector<Vector3d> onePath;
         Vector3d robotLastPos = 0.6 * Vector3d(
-            world.robots.at(0).position.x(),
-            world.robots.at(0).position.y(),
+            world.robots.at(0).position.x() -1,
+            world.robots.at(0).position.y() -1,
             0) + Vector3d(origin_x,origin_y,origin_z);
         cout << robotLastPos.x()<< " " << robotLastPos.y()<< endl;
         //actionList.push_back(false);
